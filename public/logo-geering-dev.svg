@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="167.67657mm"
+   height="42.323421mm"
+   viewBox="0 0 167.67658 42.323422"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <g
+       id="g6"
+       transform="translate(-55.538212,-83.652702)">
+      <path
+         style="display:inline;fill:#f7561b;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+         d="m 76.412361,93.23927 -11.28771,11.28771 v 0 l 11.28771,11.28771 4.3e-5,-11.43951 11.287664,-0.003 z"
+         id="path5" />
+      <path
+         id="rect4"
+         style="baseline-shift:baseline;display:inline;overflow:visible;opacity:1;vector-effect:none;fill:#343434;fill-opacity:1;stroke-width:0.202844;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+         d="m 76.412361,83.652702 -20.874149,20.874148 20.874149,20.87415 4.3e-5,-21.02595 11.287664,-0.003 -11.287707,11.44264 -11.28771,-11.28771 11.28771,-11.28771 z" />
+    </g>
+    <g
+       id="g8"
+       transform="matrix(1.185911,0,0,1.185911,-24.219016,-20.181774)"
+       style="display:inline">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.4235px;font-family:Inter;-inkscape-font-specification:'Inter, @wght=600';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 600;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#343434;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+         x="51.099789"
+         y="40.473923"
+         id="text6"><tspan
+           id="tspan6"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.4235px;font-family:Inter;-inkscape-font-specification:'Inter, @wght=600';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 600;fill:#343434;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+           x="51.099789"
+           y="40.473923">eering</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.4235px;font-family:Inter;-inkscape-font-specification:'Inter, @wght=600';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 600;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#f7561b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+         x="116.98819"
+         y="40.473923"
+         id="text8"><tspan
+           id="tspan8"
+           style="fill:#f7561b;fill-opacity:1;stroke-width:0"
+           x="116.98819"
+           y="40.473923">.dev</tspan></text>
+    </g>
+  </g>
+</svg>
