@@ -27,7 +27,7 @@
                 </button>
             </div>
         </div>
-        <div class="ml-12">
+        <div class="sm:ml-12">
             <p>{!! __('home.intro') !!}</p>
             <div class="flex gap-8 mt-8 flex-col lg:flex-row">
                 <div>
