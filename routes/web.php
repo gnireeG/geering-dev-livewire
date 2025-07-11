@@ -2,11 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Livewire\Livewire;
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function(){
+
+    Livewire::setUpdateRoute(function ($handle) {
+        return Route::post('/livewire/update', $handle);
+    });
 
     Route::get('/', function () {
         return view('welcome');
@@ -22,6 +27,13 @@ Route::group([
         Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
         Volt::route('settings/password', 'settings.password')->name('settings.password');
         Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+
+        Route::group(['prefix' => 'admin'], function() {
+            Route::group(['prefix' => 'portfolio'], function(){
+                Route::get('/', \App\Livewire\Portfolio\Index::class)->name('portfolio.index');
+                Route::get('/create', \App\Livewire\Portfolio\Create::class)->name('portfolio.create');
+            });
+        });
     });
 });
 
