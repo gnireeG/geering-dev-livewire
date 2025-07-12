@@ -100,6 +100,10 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
+h1{
+    @apply text-4xl font-bold text-primary pb-4;
+}
+
 h2{
     @apply text-3xl font-semibold text-primary pb-4;
 }

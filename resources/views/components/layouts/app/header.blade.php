@@ -120,5 +120,6 @@
         {{ $slot }}
 
         @fluxScripts
+        @mediaLibraryScripts
     </body>
 </html>

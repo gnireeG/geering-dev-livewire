@@ -14,7 +14,10 @@
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",
         "livewire/volt": "^1.7.0",
-        "mcamara/laravel-localization": "^2.3"
+        "mcamara/laravel-localization": "^2.3",
+        "spatie/laravel-markdown": "^2.7",
+        "spatie/laravel-medialibrary": "^11.13",
+        "spatie/laravel-medialibrary-pro": "^6.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -78,5 +81,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+    {
+        "type": "composer",
+        "url": "https://satis.spatie.be"
+    }
+]
 }

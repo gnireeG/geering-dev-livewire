@@ -31,7 +31,8 @@ Route::group([
         Route::group(['prefix' => 'admin'], function() {
             Route::group(['prefix' => 'portfolio'], function(){
                 Route::get('/', \App\Livewire\Portfolio\Index::class)->name('portfolio.index');
-                Route::get('/create', \App\Livewire\Portfolio\Create::class)->name('portfolio.create');
+                Route::get('/create', \App\Livewire\Portfolio\Editportfolio::class)->name('portfolio.create');
+                Route::get('/edit/{id}', \App\Livewire\Portfolio\Editportfolio::class)->name('portfolio.edit');
             });
         });
     });

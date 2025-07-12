@@ -46,13 +46,13 @@ const theme = {
 reflectPreference()
 
 window.onload = () => {
+  const themeToggle = document.querySelector('#theme-toggle')
+  if (!themeToggle) return
   // set on load so screen readers can see latest value on the button
   reflectPreference()
 
   // now this script can find and listen for clicks on the control
-  document
-    .querySelector('#theme-toggle')
-    .addEventListener('click', onClick)
+  themeToggle.addEventListener('click', onClick)
 }
 
 // sync with system changes

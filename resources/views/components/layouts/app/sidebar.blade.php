@@ -18,7 +18,7 @@
             </flux:navlist>
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="Portfolio" class="grid">
-                    <flux:navlist.item icon="home" :href="route('portfolio.index')" :current="request()->routeIs('portfolio.index')" wire:navigate>{{ __('Portfolio') }}</flux:navlist.item>
+                    <flux:navlist.item icon="trophy" :href="route('portfolio.index')" :current="request()->routeIs('portfolio.index')" wire:navigate>{{ __('Portfolio') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -133,5 +133,6 @@
         {{ $slot }}
 
         @fluxScripts
+        @mediaLibraryScripts
     </body>
 </html>
