@@ -42,6 +42,7 @@ class Editportfolio extends Component
         $this->validate([
             'title' => 'required|string|max:255|min:10',
             'description' => 'required|string|max:1000|min:20',
+            'images.*.custom_properties.alt_tag' => 'required|string|max:255',
         ]);
 
         $this->portfolio->update(['title' => $this->title, 'description' => $this->description]);

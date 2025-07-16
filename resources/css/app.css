@@ -206,3 +206,24 @@ html.dark .sun-and-moon > .moon > circle {
 .dark #logo-light{
     @apply hidden;
 }
+
+.navlink::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.navlink.active::after{
+  width: 100%;
+}
+
+.navlink:hover::after{
+  width: 100%;
+}
+
+.container{
+  @apply px-4 md:px-8 lg:px-12;
+}

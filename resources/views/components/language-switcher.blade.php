@@ -20,7 +20,7 @@
 
     <div class="flex gap-2">
         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-            <a rel="alternate" @if($localeCode == LaravelLocalization::getCurrentLocale()) class="font-bold" @endif hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" title="{{ $properties['native'] }}">
+            <a wire:navigate rel="alternate" @if($localeCode == LaravelLocalization::getCurrentLocale()) class="font-bold" @endif hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" title="{{ $properties['native'] }}">
                 {{ $localeCode }}
             </a>
         @endforeach

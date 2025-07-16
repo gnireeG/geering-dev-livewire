@@ -11,14 +11,19 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
 class Portfolio extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use HasSlug;
     
     protected $fillable = [
         'title',
         'description',
+        'slug'
     ];
 
     public function registerMediaConversions(?Media $media = null): void
@@ -27,5 +32,13 @@ class Portfolio extends Model implements HasMedia
             ->addMediaConversion('preview')
             ->fit(Fit::Contain, 300, 300)
             ->nonQueued();
+    }
+
+    public function getSlugOptions():SlugOptions{
+        return SlugOptions::create()->generateSlugsFrom('title')->saveSlugsTo('slug');
+    }
+
+    public function getRouteKeyName(){
+        return 'slug';
     }
 }

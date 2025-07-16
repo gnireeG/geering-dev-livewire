@@ -46,6 +46,7 @@
                     :model="$portfolio"
                     wire:model="images"
                     rules="mimes:jpeg,png"
+                    fields-view="components.portfolio.partials.formfields"
                 />
             <div class="flex justify-end gap-2">
                 <a href="{{ route('portfolio.index') }}" wire:navigate><flux:button variant="ghost" class="mt-8" type="button">Cancel</flux:button></a>
