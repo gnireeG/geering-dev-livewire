@@ -4,9 +4,11 @@ namespace App\Livewire\Portfolio;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use App\Models\Portfolio;
 
 #[Layout('components.layouts.app')]
+#[Title('Portfolios')]
 class Index extends Component
 {
 

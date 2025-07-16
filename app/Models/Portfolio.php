@@ -14,16 +14,20 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
+use Spatie\Tags\HasTags;
+
 class Portfolio extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
     use HasSlug;
+    use HasTags;
     
     protected $fillable = [
         'title',
         'description',
-        'slug'
+        'slug',
+        'shortdesc'
     ];
 
     public function registerMediaConversions(?Media $media = null): void

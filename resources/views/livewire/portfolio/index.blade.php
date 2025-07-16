@@ -5,25 +5,13 @@
             <flux:button icon:trailing="plus" class="cursor-pointer">Create Portfolio</flux:button>
         </a>
     </section>
-    {{-- <form wire:submit.prevent="create">
-        <flux:field>
-            <flux:label>Title</flux:label>
-            <flux:input wire:model="title" />
-            <flux:error name="title" />
-        </flux:field>
-        <flux:field class="mt-4">
-            <flux:label>Description</flux:label>
-            <flux:textarea wire:model="description" />
-            <flux:error name="description" />
-        </flux:field>
-        <flux:button class="mt-8" wire:click="create">Create</flux:button>
-    </form> --}}
     <flux:separator class="my-8" />
     <div class="overflow-x-auto">
         <table>
             <thead>
                 <tr>
                     <th class="p-2" align="left">Title</th>
+                    <th class="p-2" align="left">Short Description</th>
                     <th class="p-2" align="left">Description</th>
                     <th class="p-2" align="left">Actions</th>
                 </tr>
@@ -32,6 +20,7 @@
             @foreach($portfolios as $p)
                 <tr class="hover:bg-zinc-50 hover:dark:bg-zinc-700">
                     <td class="p-2">{{$p->title}}</td>
+                    <td class="p-2">{{$p->shortdesc}}</td>
                     <td class="p-2">{{$p->description}}</td>
                     <td class="p-2 flex gap-2">
                         <a href="{{ route('portfolio.edit', ['id' => $p->id]) }}" wire:navigate><flux:button size="sm" icon="pencil-square" /></a>

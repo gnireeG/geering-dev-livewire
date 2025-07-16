@@ -16,7 +16,9 @@ class Portfolio extends Component
     public $portfolios;
 
     public function mount(){
-        $this->portfolios = PortfolioModel::all();
+        $this->portfolios = PortfolioModel::with(['media' => function($q){
+            $q->orderBy('order_column', 'asc');
+        }])->get();
     }
 
     public function render()

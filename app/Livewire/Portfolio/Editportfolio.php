@@ -4,6 +4,7 @@ namespace App\Livewire\Portfolio;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use App\Models\Portfolio;
 
 use Spatie\MediaLibraryPro\Livewire\Concerns\WithMedia;
@@ -17,17 +18,21 @@ class Editportfolio extends Component
     public $portfolio;
 
     public $title;
+    public $shortdesc;
     public $description;
 
     public $images = [];
 
+    public $tags = [];
+
     public function create(){
         $this->validate([
-            'title' => 'required|string|max:255|min:10',
-            'description' => 'required|string|max:1000|min:20',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'shortdesc' => 'nullable|string',
         ]);
 
-        Portfolio::create(['title' => $this->title, 'description' => $this->description]);
+        Portfolio::create(['title' => $this->title, 'description' => $this->description, 'shortdesc' => $this->shortdesc]);
 
         // Redirect to edit page after successful creation
         $this->portfolio = Portfolio::where('title', $this->title)->first();
@@ -40,17 +45,28 @@ class Editportfolio extends Component
 
     public function update(){
         $this->validate([
-            'title' => 'required|string|max:255|min:10',
-            'description' => 'required|string|max:1000|min:20',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'shortdesc' => 'nullable|string',
             'images.*.custom_properties.alt_tag' => 'required|string|max:255',
         ]);
 
-        $this->portfolio->update(['title' => $this->title, 'description' => $this->description]);
+        $this->portfolio->update(['title' => $this->title, 'description' => $this->description, 'shortdesc' => $this->shortdesc]);
         $this->portfolio->addFromMediaLibraryRequest($this->images)->toMediaCollection('images');
+
+        $this->portfolio->syncTags($this->tags);
 
         // reload the portfolio from the database
         $this->portfolio = Portfolio::find($this->portfolio->id);
+        $this->setTags();
         session()->flash('success', 'Portfolio updated successfully.');
+    }
+
+    private function setTags(){
+        $this->tags = [];
+        foreach($this->portfolio->tags as $tag){
+            $this->tags[] = $tag->name;
+        }
     }
 
     public function mount($id = null){
@@ -58,17 +74,17 @@ class Editportfolio extends Component
         $this->images = [];
         
         if($id){
-            $this->portfolio = Portfolio::find($id);
+            $this->portfolio = Portfolio::with('tags')->find($id);
             $this->title = $this->portfolio->title;
             $this->description = $this->portfolio->description;
+            $this->shortdesc = $this->portfolio->shortdesc;
+            $this->setTags();
         }
     }
 
     public function render()
     {
         $pageTitle = $this->portfolio ? __('Edit Portfolio') : __('Create Portfolio');
-        return view('livewire.portfolio.editportfolio', [
-            'title' => $pageTitle
-        ]);
+        return view('livewire.portfolio.editportfolio')->title($pageTitle);
     }
 }
