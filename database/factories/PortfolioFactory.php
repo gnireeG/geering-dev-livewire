@@ -11,7 +11,6 @@ use Illuminate\Support\Str;
 class PortfolioFactory extends Factory
 {
 
-
     /**
      * Define the model's default state.
      *
@@ -19,9 +18,12 @@ class PortfolioFactory extends Factory
      */
     public function definition(): array
     {
+        $mdfaker = \Faker\Factory::create();
+        $mdfaker->addProvider(new \DavidBadura\FakerMarkdownGenerator\FakerProvider($mdfaker));
         return [
             'title' => fake()->sentence(3),
-            'description' => fake()->paragraph(),
+            'description' => $mdfaker->markdown(),
+            'shortdesc' => fake()->sentence(Rand(7, 15)),
         ];
     }
 
