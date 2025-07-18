@@ -24,9 +24,32 @@
 
 </head>
 <body class="bg-bg text-accent flex flex-col min-h-[100vh] relative">
-    <header class="flex justify-center bg-bg-light/80 sticky top-0 w-full py-4 z-30 backdrop-blur">
-        <x-navigation.navigation />
-    </header>
+    <div class="flex justify-center bg-bg-light/80 w-full py-4 z-30 backdrop-blur">
+        {{-- <x-navigation.navigation /> --}}
+        <div class="container flex justify-between items-center">
+            <div>
+                <a href="{{route('home')}}" wire:navigate><img src="{{ asset('logo-geering-dev-dark.png') }}" alt="Logo geering.dev" class="w-48" id="logo-dark"></a>
+                <a href="{{route('home')}}" wire:navigate><img src="{{ asset('logo-geering-dev-light.png') }}" alt="Logo geering.dev" class="w-48" id="logo-light"></a>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center w-full fixed top-0 z-30 hover:backdrop-blur py-4 group transition-colors">
+        <div class="container flex justify-between items-center">
+            <div class="opacity-0 group-hover:opacity-100 transition-opacity">
+                <a href="{{route('home')}}" wire:navigate><img src="{{ asset('logo-geering-dev-dark.png') }}" alt="Logo geering.dev" class="w-48" id="logo-dark"></a>
+                <a href="{{route('home')}}" wire:navigate><img src="{{ asset('logo-geering-dev-light.png') }}" alt="Logo geering.dev" class="w-48" id="logo-light"></a>
+            </div>
+            <nav class="flex gap-2 items-center justify-end">
+                <ul class="flex">
+                    <livewire:Navigation.Navlink route="home" name="Home" />
+                    <livewire:Navigation.Navlink route="about" name="About" />
+                    <livewire:Navigation.Navlink route="portfolio" name="Portfolio" />
+                    <livewire:Navigation.Navlink route="contact" name="Contact" />
+                </ul>
+                <x-language-switcher variant="dropdown" />
+            </nav>
+        </div>
+    </div>
     <main class="grow py-4 md:py-8 lg:py-12 overflow-x-hidden">
         {{ $slot }}
     </main>
