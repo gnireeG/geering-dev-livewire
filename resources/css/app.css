@@ -253,3 +253,43 @@ html.dark .sun-and-moon > .moon > circle {
   z-index: -100000;
 }
 
+.markdown ul{
+  list-style-type: disc;
+  padding-left: 1.5em;
+}
+
+.markdown ol{
+  list-style-type: decimal;
+  padding-left: 1.5em;
+}
+
+.markdown blockquote{
+  border-left: 4px solid var(--color-primary);
+  padding-left: 1em;
+  font-style: italic;
+}
+
+.markdown > *:not(h1, h2, h3, h4, h5, h6){
+  margin-bottom: 1.5rem;
+}
+
+.markdown a{
+  color: var(--color-primary);
+}
+
+.markdown a:hover{
+  text-decoration: underline;
+}
+
+.mobile-nav{
+  transform: translateX(100vw);
+}
+
+.mobile-nav.open{
+  transform: translateX(0);
+}
+
+/* Prevent flash of unstyled content with Alpine.js */
+[x-cloak] {
+    display: none !important;
+}

@@ -51,3 +51,8 @@ if(document.documentElement.getAttribute('data-session-theme') !== null) {
 
     document.addEventListener('livewire:navigated', onLoad)
 }
+
+
+document.addEventListener('alpine:init', () => {
+    Alpine.store('navOpen', false)
+})
