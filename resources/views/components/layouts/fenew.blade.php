@@ -57,7 +57,7 @@
         </nav>
     </header>
     {{-- Mobile Navigation Toggle --}}
-    <div class="md:hidden fixed top-3 right-2 z-30">
+    <div class="md:hidden fixed top-3 right-2 z-30 -translate-y-0.5">
         <button @click="$store.nav.toggle()" class="p-2 cursor-pointer active:ring-2 rounded-lg visited:ring-2">
             <flux:icon.bars-3-bottom-left class="size-8" x-show="!$store.nav.open" />
             <flux:icon.bars-3-bottom-right class="size-8" x-show="$store.nav.open" x-cloak />
