@@ -20,20 +20,20 @@ Route::group([
     });
 
     // NEW
-    Route::group(['prefix' => 'new'], function () {
-        Route::get('/', \App\Livewire\Home::class)->name('home');
-        Route::get('/portfolio', \App\Livewire\Portfolio::class)->name('portfolio');
-        Route::get('/portfolio/{portfolio}', \App\Livewire\PortfolioDetail::class)->name('portfolio.detail');
-        Route::get('/about', \App\Livewire\About::class)->name('about');
-        Route::get('/contact', \App\Livewire\Contact::class)->name('contact');
-    });
+    /* Route::group(['prefix' => 'new'], function () { */
+    Route::get('/', \App\Livewire\Home::class)->name('home');
+    Route::get('/portfolio', \App\Livewire\Portfolio::class)->name('portfolio');
+    Route::get('/portfolio/{portfolio}', \App\Livewire\PortfolioDetail::class)->name('portfolio.detail');
+    Route::get('/about', \App\Livewire\About::class)->name('about');
+    Route::get('/contact', \App\Livewire\Contact::class)->name('contact');
+    /* }); */
 
 
     // OLD
 
-    Route::get('/', function () {
+    /* Route::get('/', function () {
         return view('welcome');
-    })->name('home-old');
+    })->name('home-old'); */
 
 
     // AUTH
