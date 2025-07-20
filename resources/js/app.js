@@ -54,5 +54,20 @@ if(document.documentElement.getAttribute('data-session-theme') !== null) {
 
 
 document.addEventListener('alpine:init', () => {
-    Alpine.store('navOpen', false)
+    Alpine.store('nav', {
+        open: false,
+        toggle() {
+            this.open = !this.open
+        },
+        close() {
+            this.open = false
+        }
+    })
+})
+
+document.addEventListener('livewire:navigated', () => {
+    
+    setTimeout(() => {
+        Alpine.store('nav').close()
+    }, 10)
 })

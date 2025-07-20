@@ -3,7 +3,7 @@
     class="{{ session('theme', 'light') }} min-h-[100vh] overflow-x-hidden"
     data-session-theme="{{session('theme') ? "true" : "false"}}"
     data-theme="{{ session('theme', 'light') }}"
-     x-data :class="$store.navOpen ? 'overflow-y-hidden' : ''">
+     x-data :class="$store.nav.open ? 'overflow-y-hidden' : ''">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,11 +57,14 @@
         </nav>
     </header>
     {{-- Mobile Navigation Toggle --}}
-    <div class="md:hidden fixed top-3.5 right-4 z-30">
-        <button @click="$store.navOpen = !$store.navOpen" class="p-2 cursor-pointer"><flux:icon.bars-3 /></button>
+    <div class="md:hidden fixed top-3 right-2 z-30">
+        <button @click="$store.nav.toggle()" class="p-2 cursor-pointer active:ring-2 rounded-lg visited:ring-2">
+            <flux:icon.bars-3-bottom-left class="size-8" x-show="!$store.nav.open" />
+            <flux:icon.bars-3-bottom-right class="size-8" x-show="$store.nav.open" x-cloak />
+        </button>
     </div>
     {{-- Mobile Navigation --}}
-    <header class="md:hidden fixed top-0 left-0 w-full h-screen z-20 flex justify-center items-center transition-transform duration-500 mobile-nav" :class="$store.navOpen ? 'open' : ''">
+    <header class="md:hidden fixed top-0 left-0 w-full h-screen z-20 flex justify-center items-center transition-transform duration-500 mobile-nav" :class="$store.nav.open ? 'open' : ''">
         <nav class="flex flex-col items-center gap-4 h-full justify-between py-32">
             <div>
                 <a href="{{route('home')}}" wire:navigate x-show="showLogoInMobileNav"><img src="{{ asset('logo-geering-dev-dark.png') }}" alt="Logo geering.dev" class="w-30 md:w-48" id="logo-dark"></a>
@@ -81,7 +84,7 @@
             </div>
         </nav>
     </header>
-    <main class="grow py-4 md:py-8 lg:py-12 overflow-x-hidden transition-transform duration-500" :class="$store.navOpen ? '-translate-x-[100vw]' : ''">
+    <main class="grow py-4 md:py-8 lg:py-12 overflow-x-hidden transition-transform duration-500" :class="$store.nav.open ? '-translate-x-[100vw]' : ''">
         {{ $slot }}
     </main>
     <footer class="flex justify-center bg-bg-light/80 p-2 md:p-4 lg:p-8">
