@@ -22,8 +22,8 @@ Route::group([
     // NEW
     /* Route::group(['prefix' => 'new'], function () { */
     Route::get('/', \App\Livewire\Home::class)->name('home');
-    Route::get('/portfolio', \App\Livewire\Portfolio::class)->name('portfolio');
-    Route::get('/portfolio/{portfolio}', \App\Livewire\PortfolioDetail::class)->name('portfolio.detail');
+    Route::get('/portfolio', \App\Livewire\Portfolio\Portfolio::class)->name('portfolio');
+    Route::get('/portfolio/{slug}', \App\Livewire\Portfolio\Detail::class)->name('portfolio.detail');
     Route::get('/about', \App\Livewire\About::class)->name('about');
     Route::get('/contact', \App\Livewire\Contact::class)->name('contact');
     /* }); */
@@ -51,9 +51,9 @@ Route::group([
 
         Route::group(['prefix' => 'admin'], function() {
             Route::group(['prefix' => 'portfolio'], function(){
-                Route::get('/', \App\Livewire\Portfolio\Index::class)->name('portfolio.index');
-                Route::get('/create', \App\Livewire\Portfolio\Editportfolio::class)->name('portfolio.create');
-                Route::get('/edit/{id}', \App\Livewire\Portfolio\Editportfolio::class)->name('portfolio.edit');
+                Route::get('/', \App\Livewire\Admin\Portfolio\Index::class)->name('portfolio.index');
+                Route::get('/create', \App\Livewire\Admin\Portfolio\Editportfolio::class)->name('portfolio.create');
+                Route::get('/edit/{id}', \App\Livewire\Admin\Portfolio\Editportfolio::class)->name('portfolio.edit');
             });
         });
     });

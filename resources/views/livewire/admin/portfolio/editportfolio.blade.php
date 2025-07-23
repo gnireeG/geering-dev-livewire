@@ -52,14 +52,23 @@
                 </div>
             </div>
             <flux:separator class="my-8" />
+            <div class="mb-8">
+                <livewire:media-library
+                    collection="images"
+                    :model="$portfolio"
+                    wire:model="images"
+                    rules="mimes:jpeg,png"
+                    fields-view="components.portfolio.partials.formfields"
+                />
+            </div>
             <div>
-            <livewire:media-library
-                collection="images"
-                :model="$portfolio"
-                wire:model="images"
-                rules="mimes:jpeg,png"
-                fields-view="components.portfolio.partials.formfields"
-            />
+                <flux:label>Banner</flux:label>
+                <livewire:media-library
+                    collection="banner"
+                    :model="$portfolio"
+                    wire:model="banner"
+                    rules="mimes:jpeg,png"
+                />
             </div>
             @endif
             <div class="flex justify-end gap-2">

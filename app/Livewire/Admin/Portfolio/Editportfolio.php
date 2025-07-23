@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Portfolio;
+namespace App\Livewire\Admin\Portfolio;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -22,6 +22,7 @@ class Editportfolio extends Component
     public $description;
 
     public $images = [];
+    public $banner = [];
 
     public $tags = [];
 
@@ -53,6 +54,7 @@ class Editportfolio extends Component
 
         $this->portfolio->update(['title' => $this->title, 'description' => $this->description, 'shortdesc' => $this->shortdesc]);
         $this->portfolio->addFromMediaLibraryRequest($this->images)->toMediaCollection('images');
+        $this->portfolio->addFromMediaLibraryRequest($this->banner)->toMediaCollection('banner');
 
         $this->portfolio->syncTags($this->tags);
 
@@ -72,7 +74,8 @@ class Editportfolio extends Component
     public function mount($id = null){
         // Initialize media property to prevent null assignment error
         $this->images = [];
-        
+        $this->banner = [];
+
         if($id){
             $this->portfolio = Portfolio::with('tags')->find($id);
             $this->title = $this->portfolio->title;
@@ -85,6 +88,6 @@ class Editportfolio extends Component
     public function render()
     {
         $pageTitle = $this->portfolio ? __('Edit Portfolio') : __('Create Portfolio');
-        return view('livewire.portfolio.editportfolio')->title($pageTitle);
+        return view('livewire.admin.portfolio.editportfolio')->title($pageTitle);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Portfolio;
+namespace App\Livewire\Admin\Portfolio;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -43,6 +43,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.portfolio.index');
+        return view('livewire.admin.portfolio.index');
     }
 }
