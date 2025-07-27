@@ -38,19 +38,31 @@ class Portfolio extends Component
         $this->selectedTags[] = $tagName;
     }
 
-
-
     public function removeTag($tagName){
         $this->selectedTags = array_filter($this->selectedTags, function($tag) use ($tagName) {
             return $tag !== $tagName;
         });
     }
 
-    public function mount(){
-        $usedTagIds = DB::table('taggables')->select('tag_id')->distinct()->pluck('tag_id');
+    public function resetTags(){
+        $this->selectedTags = [];
+    }
 
-        // Get the actual Tag models
-        $this->tags = Tag::whereIn('id', $usedTagIds)->get();
+    public function mount(){
+        if(config('features.portfolio.tags')){
+            $usedTagIds = DB::table('taggables')->select('tag_id')->distinct()->pluck('tag_id');
+    
+            // Get the actual Tag models
+            $this->tags = Tag::whereIn('id', $usedTagIds)->get();
+    
+            // get the selected tags from the url
+            if(request()->query('tags', '')){
+                $this->selectedTags = explode(',', request()->query('tags', ''));
+            } else {
+                $this->selectedTags = [];
+            }
+        }
+        
     }
 
     public function render()

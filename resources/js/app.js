@@ -40,11 +40,13 @@ if(document.documentElement.getAttribute('data-session-theme') !== null) {
     }
 
     function onLoad(){
-        const themeToggle = document.querySelector('#theme-toggle')
+        const themeToggle = document.querySelectorAll('.theme-toggle')
         if (!themeToggle) return
 
         // Add click listener
-        themeToggle.addEventListener('click', onClick)
+        themeToggle.forEach(toggle => {
+            toggle.addEventListener('click', onClick)
+        })
     }
 
     document.addEventListener('DOMContentLoaded', onLoad)

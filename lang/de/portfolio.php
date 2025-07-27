@@ -5,4 +5,5 @@ return [
     'show_tags' => 'Tags anzeigen',
     'hide_tags' => 'Tags ausblenden',
     'back' => 'Zurück zur Übersicht',
+    'show_all' => 'Alle anzeigen',
 ];
