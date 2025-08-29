@@ -14,7 +14,7 @@
         <div x-data="{open: false}" class="{{ $attributes['class'] }}">
             <div class="flex gap-4">
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                    <a wire:navigate rel="alternate" @if($localeCode == LaravelLocalization::getCurrentLocale()) class="font-bold" @endif hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" title="{{ $properties['native'] }}">
+                    <a rel="alternate" @if($localeCode == LaravelLocalization::getCurrentLocale()) class="font-bold" @endif hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" title="{{ $properties['native'] }}">
                         {{ Str::ucfirst($properties['native']) }}
                     </a>
                 @endforeach

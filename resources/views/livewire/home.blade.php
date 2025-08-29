@@ -7,14 +7,14 @@
                 <div class="md:max-w-8/12">
                     <h1 class="mb-4"><span class="bg-bg-light">{!! __('home.heading') !!}</span></h1>
                     <p class="text-lg mb-8 max-w-2xl"><span class="bg-bg-light">{{ __('home.intro') }}</span></p>
-                    <a href="mailto:pascal@deinedomain.ch" class="btn-outline"><flux:icon.chevron-right />{{ __('home.c2a_project') }}</a>
+                    <a href="mailto:pascal@deinedomain.ch" class="btn btn-outline"><flux:icon.chevron-right />{{ __('home.c2a_project') }}</a>
                 </div>
             </x-container>
         </div>
         <x-container class="md:hidden py-12">
             <h1 class="mb-4">{!! __('home.heading') !!}</h1>
             <p class="text-lg mb-8 max-w-2xl">{!! __('home.intro') !!}</p>
-            <a href="mailto:pascal@deinedomain.ch" class="btn-outline"><flux:icon.chevron-right />{{ __('home.c2a_project') }}</a>
+            <a href="mailto:pascal@deinedomain.ch" class="btn btn-outline"><flux:icon.chevron-right />{{ __('home.c2a_project') }}</a>
         </x-container>
     </section>
     <x-container>
@@ -70,7 +70,7 @@
                 <div class="sm:col-span-8 lg:col-span-9">
                     <h2 class="text-3xl font-semibold mb-4">{{ __('home.contact') }}</h2>
                     <p class="mb-6">{{ __('home.contact_description') }}</p>
-                    <a href="{{ route('contact') }}" class="btn-outline"><flux:icon.chevron-right />{{ __('home.contact_me') }}</a>
+                    <a href="{{ route('contact') }}" class="btn btn-outline"><flux:icon.chevron-right />{{ __('home.contact_me') }}</a>
                 </div>
             </div>
         </x-container>

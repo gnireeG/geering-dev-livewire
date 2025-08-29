@@ -69,6 +69,7 @@ document.addEventListener('alpine:init', () => {
 
 document.addEventListener('livewire:navigated', () => {
     
+    // Close the nav
     setTimeout(() => {
         Alpine.store('nav').close()
     }, 10)

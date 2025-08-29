@@ -12,7 +12,9 @@ x-init="window.addEventListener('scroll', () => {showLogoInMobileNav = window.sc
     <main class="grow overflow-x-hidden transition-transform duration-500 {{isset($noPadding) && $noPadding ? '' : 'py-4 md:py-8 lg:py-12'}}" :class="$store.nav.open ? '-translate-x-[100vw]' : ''">
         {{ $slot }}
     </main>
-    <x-layouts.fenew.footer />
+    <div class="transition-transform duration-500 overflow-x-hidden" :class="$store.nav.open ? '-translate-x-[100vw]' : ''">
+        <x-layouts.fenew.footer  />
+    </div>
     <div id="bg-gradient"></div>
     <div id="bg-pattern"></div>
     @fluxScripts
