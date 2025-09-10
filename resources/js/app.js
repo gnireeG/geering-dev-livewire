@@ -65,6 +65,13 @@ document.addEventListener('alpine:init', () => {
             this.open = false
         }
     })
+    Alpine.data('dropdown', () => ({
+        open: false,
+
+        toggle() {
+            this.open = ! this.open
+        },
+    }))
 })
 
 document.addEventListener('livewire:navigated', () => {

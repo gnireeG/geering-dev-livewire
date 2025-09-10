@@ -1,18 +1,18 @@
-<div x-data="{existingWebsite: $wire.existing_website}">
+<div x-data="{has_website: $wire.has_website}">
     @include('livewire.contact.step-navigation')
     <?php $pageOne = $this->state()->forStep('contact.step-one'); ?>
     {{-- WEBSITE --}}
     @if($pageOne['whatYouNeed']['website'])
     <section class="mb-16">
         <x-forms.radio
-        :label="__('contact.existing_website')"
+        :label="__('contact.has_website')"
         :options="['yes' => __('general.yes'), 'no' => __('general.no')]"
-        name="existing_website"
-        wireModel="existing_website"
-        xModel="existingWebsite"
+        name="has_website"
+        wireModel="has_website"
+        xModel="has_website"
         />
-        <div x-show="existingWebsite == 'yes'" x-transition>
-            <x-forms.text class="mb-4" label="contact.website_url" wireModel="websiteUrl" placeholder="contact.website_url_placeholder" />
+        <div x-show="has_website == 'yes'" x-transition>
+            <x-forms.text class="mb-4" label="contact.existing_website" wireModel="existing_website" placeholder="contact.existing_website_placeholder" />
         </div>
         <div class="grid md:grid-cols-2 gap-4">
             <x-forms.textarea class="mb-4" label="contact.website_inspiration" wireModel="website_inspiration" placeholder="contact.website_inspiration_placeholder" class="mt-8" />

@@ -110,7 +110,13 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'name' => env('MAIL_FROM_NAME', 'Example name'),
     ],
-
+    'reply_to' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example name'),
+    ],
+    'admin' => [
+        'address' => env('MAIL_ADMIN_ADDRESS', 'admin@example.com'),
+    ],
 ];

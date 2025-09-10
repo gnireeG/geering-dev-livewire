@@ -1,5 +1,5 @@
 <fieldset class="mb-4">
-    <legend class="font-semibold mb-4">{{ $label }}</legend>
+    <legend><x-forms.label>{{ __($attributes['label']) }}</x-forms.label></legend>
     @foreach($options as $optionValue => $optionLabel)
         <label class="flex gap-2 items-center mb-2">
             <input 

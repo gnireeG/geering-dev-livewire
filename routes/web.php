@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use Livewire\Livewire;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::post('/theme', function(){
     $theme = request()->input('theme', 'light');
@@ -55,7 +56,21 @@ Route::group([
                 Route::get('/create', \App\Livewire\Admin\Portfolio\Editportfolio::class)->name('portfolio.create');
                 Route::get('/edit/{id}', \App\Livewire\Admin\Portfolio\Editportfolio::class)->name('portfolio.edit');
             });
+
+            Route::group(['prefix' => 'contactforms'], function(){
+                Route::get('/', \App\Livewire\Admin\Contactform\Index::class)->name('contactform.index');
+                Route::get('/{contactform}', \App\Livewire\Admin\Contactform\Detail::class)->name('contactform.detail');
+            });
         });
+
+        if(env('APP_DEBUG') === true) {
+            Route::get('/contact-mail/{id}', function ($id) {
+                $contactform = App\Models\Contactform::find($id);
+    
+                return new App\Mail\ContactformReceived($contactform);
+            });
+        }
+
     });
 });
 

@@ -70,7 +70,7 @@
                 <div class="sm:col-span-8 lg:col-span-9">
                     <h2 class="text-3xl font-semibold mb-4">{{ __('home.contact') }}</h2>
                     <p class="mb-6">{{ __('home.contact_description') }}</p>
-                    <a href="{{ route('contact') }}" class="btn btn-outline"><flux:icon.chevron-right />{{ __('home.contact_me') }}</a>
+                    <a wire:navigate href="{{ route('contact') }}" class="btn btn-outline"><flux:icon.chevron-right />{{ __('home.contact_me') }}</a>
                 </div>
             </div>
         </x-container>

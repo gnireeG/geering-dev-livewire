@@ -3,13 +3,13 @@
 namespace App\Livewire\Contact;
 
 use Spatie\LivewireWizard\Components\StepComponent;
+use Livewire\Attributes\Validate;
 
 class StepTwo extends StepComponent
 {
 
+    public $has_website = '';
     public $existing_website = '';
-    public $websiteUrl = '';
-    public $website_goal = '';
 
     public $hasNext = true;
     public $hasPrevious = true;
@@ -19,6 +19,9 @@ class StepTwo extends StepComponent
 
     public $online_shop_products = '';
     public $online_shop_location = '';
+
+    public $website_inspiration = '';
+    public $website_dislikes = '';
 
     public function stepInfo() : array
     {

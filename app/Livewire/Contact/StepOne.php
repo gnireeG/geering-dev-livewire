@@ -15,7 +15,7 @@ class StepOne extends StepComponent
     ];
 
 
-    public $otherDescription = '';
+    public $needs_other = '';
 
     public $hasNext = true;
     public $hasPrevious = false;

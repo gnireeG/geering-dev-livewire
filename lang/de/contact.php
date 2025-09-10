@@ -10,9 +10,9 @@ return [
     'description_placeholder' => 'Beschreibe dein Projekt / deine Idee in ein paar Sätzen.',
     'more_details' => 'Mehr Details',
     'contact_information' => 'Kontaktinformationen',
-    'existing_website' => 'Hast du bereits eine Webseite?',
-    'website_url' => 'Link zu deiner bestehenden Webseite',
-    'website_url_placeholder' => 'https://www.deine-website.com',
+    'has_website' => 'Hast du bereits eine Webseite?',
+    'existing_website' => 'Link zu deiner bestehenden Webseite',
+    'existing_website_placeholder' => 'https://www.deine-website.com',
     'website_inspiration' => 'Welche Art von Webseiten gefallen dir?',
     'website_inspiration_placeholder' => 'Beschreibe die Webseiten, die dir gefallen.',
     'website_dislikes' => 'Was gefällt dir nicht?',
@@ -32,5 +32,7 @@ return [
     'first_name' => 'Vorname',
     'last_name' => 'Nachname',
     'email' => 'E-Mail',
-    'phone' => 'Telefonnummer'
+    'phone' => 'Telefonnummer',
+    'thank_you_title' => 'Danke für deine Nachricht!',
+    'thank_you_text' => 'Ich melde mich so schnell wie möglich bei dir.',
 ];

@@ -21,6 +21,11 @@
                     <flux:navlist.item icon="trophy" :href="route('portfolio.index')" :current="request()->routeIs('portfolio.index')" wire:navigate>Portfolio</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+            <flux:navlist variant="outline">
+                <flux:navlist.group heading="Contactform" class="grid">
+                    <flux:navlist.item icon="trophy" :href="route('contactform.index')" :current="request()->routeIs('contactform.index')" wire:navigate>Contactform</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
 
             <flux:spacer />
 
