@@ -12,7 +12,6 @@
 
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @fluxAppearance
-<<<<<<< HEAD
 <!-- Matomo -->
 <script>
   var _paq = window._paq = window._paq || [];
@@ -28,6 +27,4 @@
   })();
 </script>
 <!-- End Matomo Code -->
-=======
 @mediaLibraryStyles
->>>>>>> f54f061af49b0df631b63b0d9003f6d833275487
