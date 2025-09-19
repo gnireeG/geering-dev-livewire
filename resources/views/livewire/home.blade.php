@@ -7,7 +7,7 @@
                 <div class="md:max-w-8/12">
                     <h1 class="mb-4"><span class="bg-bg-light">{!! __('home.heading') !!}</span></h1>
                     <p class="text-lg mb-8 max-w-2xl"><span class="bg-bg-light">{{ __('home.intro') }}</span></p>
-                    <a href="mailto:pascal@deinedomain.ch" class="btn btn-outline"><flux:icon.chevron-right />{{ __('home.c2a_project') }}</a>
+                    <a href="{{ route('contact') }}" class="btn btn-outline" wire:navigate><flux:icon.chevron-right />{{ __('home.c2a_project') }}</a>
                 </div>
             </x-container>
         </div>

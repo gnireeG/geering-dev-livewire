@@ -10,7 +10,7 @@
         <x-forms.checkbox.card label="contact.other" xModel="showOtherText" wireModel="whatYouNeed.other" image="images/contact/other.svg" />
     </x-forms.checkbox.container>
     <div x-show="showOtherText" x-transition class="mt-8">
-        <x-forms.text label="contact.other_description" wireModel="needs_other" placeholder="contact.other_description_placeholder" />
+        <x-forms.text label="{{ __('contact.other_description') }}" wireModel="needs_other" placeholder="{{ __('contact.other_description_placeholder') }}" />
     </div>
     
     @include('livewire.contact.button-navigation')

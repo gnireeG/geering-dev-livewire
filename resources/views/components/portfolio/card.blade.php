@@ -3,7 +3,10 @@ href="{{ route('portfolio.detail', ['slug' => $portfolio->slug]) }}"
 class="cursor-pointer bg-bg-light rounded-t-2xl rounded-b-2xl group">
     <div class="w-full aspect-video overflow-hidden rounded-t-2xl">
         <img
-        @if($portfolio->getFirstMedia('images'))
+        @if($portfolio->getFirstMedia('banner'))
+            src="{{ $portfolio->getFirstMediaUrl('banner', 'thumb') }}"
+            alt="{{ $portfolio->getFirstMedia('banner')->custom_properties['alt_tag'] ?? 'Titelbild Portfolio' }}"
+        @elseif($portfolio->getFirstMedia('images'))
             src="{{ $portfolio->getFirstMediaUrl('images', 'thumb') }}"
             alt="{{ $portfolio->getFirstMedia('images')->custom_properties['alt_tag'] ?? 'Titelbild Portfolio' }}"
         @else

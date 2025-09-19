@@ -21,6 +21,8 @@ class Editportfolio extends Component
     public $shortdesc;
     public $description;
 
+    public $published = false;
+
     public $images = [];
     public $banner = [];
 
@@ -31,9 +33,10 @@ class Editportfolio extends Component
             'title' => 'required|string',
             'description' => 'required|string',
             'shortdesc' => 'nullable|string',
+            'published' => 'boolean',
         ]);
 
-        Portfolio::create(['title' => $this->title, 'description' => $this->description, 'shortdesc' => $this->shortdesc]);
+        Portfolio::create(['title' => $this->title, 'description' => $this->description, 'shortdesc' => $this->shortdesc, 'published' => $this->published]);
 
         // Redirect to edit page after successful creation
         $this->portfolio = Portfolio::where('title', $this->title)->first();
@@ -49,12 +52,13 @@ class Editportfolio extends Component
             'title' => 'required|string',
             'description' => 'required|string',
             'shortdesc' => 'nullable|string',
+            'published' => 'boolean',
             'images.*.custom_properties.alt_tag' => 'required|string|max:255',
         ]);
 
-        $this->portfolio->update(['title' => $this->title, 'description' => $this->description, 'shortdesc' => $this->shortdesc]);
-        $this->portfolio->addFromMediaLibraryRequest($this->images)->toMediaCollection('images');
-        $this->portfolio->addFromMediaLibraryRequest($this->banner)->toMediaCollection('banner');
+        $this->portfolio->update(['title' => $this->title, 'description' => $this->description, 'shortdesc' => $this->shortdesc, 'published' => $this->published]);
+        $this->portfolio->syncFromMediaLibraryRequest($this->images)->withCustomProperties('alt_tag')->toMediaCollection('images');
+        $this->portfolio->syncFromMediaLibraryRequest($this->banner)->withCustomProperties('alt_tag')->toMediaCollection('banner');
 
         $this->portfolio->syncTags($this->tags);
 
@@ -81,6 +85,7 @@ class Editportfolio extends Component
             $this->title = $this->portfolio->title;
             $this->description = $this->portfolio->description;
             $this->shortdesc = $this->portfolio->shortdesc;
+            $this->published = $this->portfolio->published ? true : false;
             $this->setTags();
         }
     }

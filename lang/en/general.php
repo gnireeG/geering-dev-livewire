@@ -1,10 +1,22 @@
 <?php
 
 return [
-    'logout' => 'Log out',
+    'logout' => 'Logout',
     'settings' => 'Settings',
-    'choose_language' => 'Choose language',
-    'know_more' => 'Learn more',
-    'read_more' => 'Read more',
-    'more_info' => 'More information',
+    'choose_language' => 'Choose Language',
+    'know_more' => 'Learn More',
+    'read_more' => 'Read More',
+    'more_info' => 'More Information',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'previous' => 'Previous',
+    'next' => 'Next',
+    'submit' => 'Submit',
+    'cancel' => 'Cancel',
+    'or' => 'or',
+    'privacy_policy' => 'Privacy Policy',
+    'contact' => 'Contact',
+    'home' => 'Home',
+    'about' => 'About Me',
+    'portfolio' => 'Portfolio',
 ];

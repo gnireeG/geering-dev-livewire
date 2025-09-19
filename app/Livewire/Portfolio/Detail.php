@@ -3,7 +3,6 @@
 namespace App\Livewire\Portfolio;
 
 use Livewire\Component;
-use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
 
 use App\Models\Portfolio;
@@ -15,7 +14,10 @@ class Detail extends Component
 
     public function mount($slug)
     {
-        $this->portfolio = Portfolio::where('slug', $slug)->with('media', 'tags')->first();
+        $this->portfolio = Portfolio::where('slug', $slug)->where('published', true)->with('media', 'tags')->first();
+        if (!$this->portfolio) {
+            abort(404);
+        }
     }
 
     #[Computed]

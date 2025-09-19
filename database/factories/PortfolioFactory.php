@@ -24,6 +24,7 @@ class PortfolioFactory extends Factory
             'title' => fake()->sentence(3),
             'description' => $mdfaker->markdown(),
             'shortdesc' => fake()->sentence(Rand(7, 15)),
+            'published' => fake()->boolean(70),
         ];
     }
 

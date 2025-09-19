@@ -23,7 +23,7 @@ class Portfolio extends Component
 
     #[Computed]
     public function portfolios(){
-       $query = PortfolioModel::with(['media' => function($q){
+       $query = PortfolioModel::where('published', true)->with(['media' => function($q){
             $q->orderBy('order_column', 'asc');
         }]);
 

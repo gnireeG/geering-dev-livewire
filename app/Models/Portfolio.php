@@ -16,6 +16,10 @@ use Spatie\Sluggable\SlugOptions;
 
 use Spatie\Tags\HasTags;
 
+use App\Models\Scopes\PublishedScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
+
+#[ScopedBy([PublishedScope::class])]
 class Portfolio extends Model implements HasMedia
 {
     use HasFactory;
@@ -27,7 +31,8 @@ class Portfolio extends Model implements HasMedia
         'title',
         'description',
         'slug',
-        'shortdesc'
+        'shortdesc',
+        'published',
     ];
 
     public function registerMediaConversions(?Media $media = null): void

@@ -3,11 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Livewire\Attributes\Title;
 
-
-
-#[Title('Homepage')]
 class Home extends Component
 {
 
@@ -21,6 +17,6 @@ class Home extends Component
     {
         return view('livewire.home')->layout('components.layouts.fenew', [
                 'noPadding' => true
-            ]);
+            ])->title(__('general.home'));
     }
 }

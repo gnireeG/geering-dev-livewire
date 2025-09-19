@@ -14,8 +14,8 @@
     <div class="text-sm text-muted mt-8 flex sm:justify-center gap-2 flex-wrap">
         <p>&copy; {{ date('Y') }} Joel Geering</p>
         <div class="flex gap-2 flex-wrap sm:justify-center">
-            <a class="footer-link" wire:navigate href="#">{{ __('footer.privacy_policy') }}</a>
-            <a class="footer-link" wire:navigate href="#">{{ __('footer.impressum') }}</a>
+            <a class="footer-link" wire:navigate href="{{ route('privacy') }}">{{ __('footer.privacy_policy') }}</a>
+            <a class="footer-link" wire:navigate href="{{ route('imprint') }}">{{ __('footer.impressum') }}</a>
         </div>
     </div>
 </x-container>

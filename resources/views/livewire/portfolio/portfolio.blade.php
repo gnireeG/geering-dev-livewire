@@ -2,7 +2,7 @@
     <div class="mb-8">
         <h1>Portfolio</h1>
         <p class="text-muted">{{ __('portfolio.intro')}}</p>
-        @if(config('features.portfolio.tags'))
+        @if(config('features.portfolio.tags') && count($tags) > 0)
         <div class="mt-8">
             <button x-cloak x-show="!showTags" @click="showTags = !showTags" class="flex gap-2 cursor-pointer items-center hover:text-primary">{{__('portfolio.show_tags')}}<flux:icon.chevron-down variant="mini" /></button>
             <button x-cloak x-show="showTags" @click="showTags = !showTags" class="flex gap-2 cursor-pointer items-center hover:text-primary">{{__('portfolio.hide_tags')}}<flux:icon.chevron-up variant="mini" /></button>

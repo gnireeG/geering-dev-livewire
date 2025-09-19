@@ -9,11 +9,10 @@ use Livewire\Attributes\Title;
 
 
 #[Layout('components.layouts.fenew')]
-#[Title('Contact')]
 class Contact extends Component
 {
     public function render()
     {
-        return view('livewire.contact');
+        return view('livewire.contact')->title(__('general.contact'));
     }
 }

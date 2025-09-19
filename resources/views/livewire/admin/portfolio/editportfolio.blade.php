@@ -5,6 +5,13 @@
     <flux:separator class="my-8" />
     <div>
         <div>
+            <div class="flex justify-end">
+                <flux:field variant="inline" class="flex items-center gap-2">
+                    <flux:checkbox wire:model="published" />
+                    <flux:label>Published</flux:label>
+                    <flux:error name="published" />
+                </flux:field>
+            </div>
             <flux:field>
                 <flux:label>Title</flux:label>
                 <flux:input wire:model="title" />

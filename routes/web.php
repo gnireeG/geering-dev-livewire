@@ -20,22 +20,17 @@ Route::group([
         return Route::post('/livewire/update', $handle);
     });
 
-    // NEW
-    /* Route::group(['prefix' => 'new'], function () { */
     Route::get('/', \App\Livewire\Home::class)->name('home');
     Route::get('/portfolio', \App\Livewire\Portfolio\Portfolio::class)->name('portfolio');
     Route::get('/portfolio/{slug}', \App\Livewire\Portfolio\Detail::class)->name('portfolio.detail');
     Route::get('/about', \App\Livewire\About::class)->name('about');
-    Route::get('/contact', \App\Livewire\Contact::class)->name('contact');
-    /* }); */
-
-
-    // OLD
-
-    /* Route::get('/', function () {
-        return view('welcome');
-    })->name('home-old'); */
-
+    Route::get(LaravelLocalization::transRoute('routes.contact'), \App\Livewire\Contact::class)->name('contact');
+    Route::get(LaravelLocalization::transRoute('routes.privacy'), function(){
+        return view('privacy')->title(__('general.privacy_policy'));
+    })->name('privacy');
+    Route::get(LaravelLocalization::transRoute('routes.imprint'), function(){
+        return view('imprint')->title(__('footer.impressum'));
+    })->name('imprint');
 
     // AUTH
 

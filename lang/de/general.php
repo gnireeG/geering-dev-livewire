@@ -14,4 +14,9 @@ return [
     'submit' => 'Absenden',
     'cancel' => 'Abbrechen',
     'or' => 'oder',
+    'privacy_policy' => 'Datenschutzerklärung',
+    'contact' => 'Kontakt',
+    'home' => 'Startseite',
+    'about' => 'Über mich',
+    'portfolio' => 'Portfolio',
 ];
