@@ -48,8 +48,11 @@
                     <a class="btn" href="mailto:joel@geering.dev">joel@geering.dev</a>
                 </div>
             </div>
-            <div>
+            <div class="flex justify-between mt-4">
                 <x-language-switcher></x-language-switcher>
+                @if(auth()->check())
+                    <a wire:navigate href="{{route('dashboard')}}">Dashboard</a>
+                @endif
             </div>
         </div>
     </main>

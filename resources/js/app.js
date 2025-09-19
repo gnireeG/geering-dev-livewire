@@ -1,65 +1,83 @@
+if(document.documentElement.getAttribute('data-session-theme') !== null) {
 
-const storageKey = 'theme-preference'
+    const html = document.documentElement
+    const sessionTheme = html.getAttribute('data-session-theme') ? html.getAttribute('data-session-theme') === "true" : false;
 
-const logoLight = document.querySelector('#logo-light'),
-logoDark = document.querySelector('#logo-dark')
+    const theme = {
+        value: html.getAttribute('data-theme') || 'light',
+    }
 
-const onClick = () => {
-  // flip current value
-  theme.value = theme.value === 'light'
-    ? 'dark'
-    : 'light'
+    async function postTheme(){
+        fetch('/theme', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ theme: theme.value })
+        })
+    }
 
-  setPreference()
+    if (!sessionTheme) {
+        const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        theme.value = prefers
+        applyTheme()
+        postTheme()
+    }
+
+    function applyTheme() {
+        html.setAttribute('data-theme', theme.value)
+        html.classList.remove('light', 'dark')
+        html.classList.add(theme.value)
+        document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme.value)
+    }
+
+    function onClick(){
+        console.log('Theme toggle clicked')
+        theme.value = theme.value === 'light' ? 'dark' : 'light'
+        applyTheme()
+        postTheme()
+    }
+
+    function onLoad(){
+        const themeToggle = document.querySelectorAll('.theme-toggle')
+        if (!themeToggle) return
+
+        // Add click listener
+        themeToggle.forEach(toggle => {
+            toggle.addEventListener('click', onClick)
+        })
+    }
+
+    document.addEventListener('DOMContentLoaded', onLoad)
+
+    document.addEventListener('livewire:navigated', onLoad)
 }
 
-const getColorPreference = () => {
-  if (localStorage.getItem(storageKey))
-    return localStorage.getItem(storageKey)
-  else
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light'
-}
 
-const setPreference = () => {
-  localStorage.setItem(storageKey, theme.value)
-  reflectPreference()
-}
+document.addEventListener('alpine:init', () => {
+    Alpine.store('nav', {
+        open: false,
+        toggle() {
+            this.open = !this.open
+        },
+        close() {
+            this.open = false
+        }
+    })
+    Alpine.data('dropdown', () => ({
+        open: false,
 
-const reflectPreference = () => {
-  /* document.firstElementChild
-    .setAttribute('data-theme', theme.value)
+        toggle() {
+            this.open = ! this.open
+        },
+    }))
+})
 
-  document
-    .querySelector('#theme-toggle')
-    ?.setAttribute('aria-label', theme.value) */
-    document.querySelector('html').classList.remove('light', 'dark')
-    document.querySelector('html').classList.add(theme.value)
-}
-
-const theme = {
-  value: getColorPreference(),
-}
-
-// set early so no page flashes / CSS is made aware
-reflectPreference()
-
-window.onload = () => {
-  // set on load so screen readers can see latest value on the button
-  reflectPreference()
-
-  // now this script can find and listen for clicks on the control
-  document
-    .querySelector('#theme-toggle')
-    .addEventListener('click', onClick)
-}
-
-// sync with system changes
-window
-  .matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', ({matches:isDark}) => {
-    theme.value = isDark ? 'dark' : 'light'
-    setPreference()
-  })
-
+document.addEventListener('livewire:navigated', () => {
+    
+    // Close the nav
+    setTimeout(() => {
+        Alpine.store('nav').close()
+    }, 10)
+})

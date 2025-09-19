@@ -1,11 +1,20 @@
 <?php
 
 return [
-    'intro' => 'Swiss web developer for modern websites & web applications.<br>Custom solutions for freelancers & SMEs',
+    'heading' => 'Modern Websites & Web Applications<br>for Businesses and Individuals',
+    'intro' => 'Tailored web solutions, cleanly implemented – with a focus on clarity, functionality, and long-term maintainability.',
+    'c2a_project' => 'Request a project',
+    'what_i_do' => 'What I do',
     'websites' => 'Websites',
-    'websites_desc' => 'Modern, user-friendly websites for freelancers, small businesses, and organizations. Clear structure, responsive design, and easy maintenance – ideal for a professional online presence.',
+    'websites_description' => 'Clear, mobile-optimized sites for freelancers & SMEs. Structured presence, fast loading, and easy to maintain.',
     'webapps' => 'Web Applications',
-    'webapps_desc' => 'Custom web solutions for digitizing and optimizing internal processes or providing digital services. Suitable for client portals, admin interfaces, MVPs, and specialized business tools.',
+    'webapps_description' => 'Digital tools, customer portals, or internal solutions – precisely tailored, custom-built, and maintainable.',
+    'about_me' => 'About me',
+    'about_me_description' => 'Web developer with a Swiss background and over 5 years of experience in tech & product. Focused on clean code, clear communication, and pragmatic solutions.',
+    'projects' => 'Projects',
+    'entire_portfolio' => 'View full portfolio',
     'contact' => 'Contact',
-    'contact_desc' => 'Curious or have a project in mind?',
+    'contact_description' => 'Are you interested in working together, want to start a project, or simply have questions about my services? I look forward to your message and am happy to offer a non-binding conversation.',
+    'contact_shortdescription' => 'Contact me via the contact form or by email.',
+    'contact_me' => 'Contact me',
 ];
