@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 
 use App\Models\Portfolio as PortfolioModel;
-use Spatie\Tags\Tag;
+use App\Models\Tag;
 
 #[Layout('components.layouts.fenew')]
 #[Title('Portfolio')]
