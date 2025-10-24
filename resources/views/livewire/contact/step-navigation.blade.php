@@ -13,7 +13,7 @@
     </div>
     <div class="md:hidden mb-8">
         <div class="flex gap-4 items-center">
-            <?php
+            @php
                 $current = 0;
                 $percentage = 0;
                 foreach($steps as $index => $step) {
@@ -23,8 +23,8 @@
                         break;
                     }
                 }
-            ?>
-            <div class="progress-bar text-sm">{{ $current }} / {{ count($steps) }}</div>
+            @endphp
+            <div class="progress-bar text-sm" style="background: radial-gradient(closest-side, var(--color-bg-light) 79%, transparent 80% 100%), conic-gradient(green {{ $percentage }}%, transparent 0);">{{ $current }} / {{ count($steps) }}</div>
             <div class="flex flex-col gap-2">
                 <p class="font-bold">{{ $steps[$current - 1]->label }}</p>
                 @if($current < count($steps))
@@ -43,8 +43,5 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: 
-    radial-gradient(closest-side, var(--color-bg-light) 79%, transparent 80% 100%),
-    conic-gradient(green {{ $percentage }}%, transparent 0);    
 }
 </style>
