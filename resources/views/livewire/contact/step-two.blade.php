@@ -1,6 +1,6 @@
 <div x-data="{has_website: $wire.has_website}">
     @include('livewire.contact.step-navigation')
-    <?php $pageOne = $this->state()->forStep('contact.step-one'); ?>
+    @php $pageOne = $this->state()->forStep('contact.step-one'); @endphp
     <div class="bg-bg p-8 rounded-xl md:w-2/3 mx-auto">
         {{-- WEBSITE --}}
         @if($pageOne['whatYouNeed']['website'])
