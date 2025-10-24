@@ -70,6 +70,9 @@ class Editportfolio extends Component
 
     private function setTags(){
         $this->tags = [];
+        if(!$this->portfolio || !$this->portfolio->tags){
+            return;
+        }
         foreach($this->portfolio->tags as $tag){
             $this->tags[] = $tag->name;
         }

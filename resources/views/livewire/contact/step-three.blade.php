@@ -24,5 +24,4 @@
             </div>
         </div>
     @endif
-    <button wire:click="$toggle('complete')">toggle thank you screen</button>
 </div>

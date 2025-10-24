@@ -2,10 +2,12 @@
 
 return [
     'what_do_you_need' => '¿Qué necesitas?',
+    'what_type_of_project' => '¿Con qué tipo de proyecto puedo ayudarte?',
     'website' => 'Sitio web',
     'webapp' => 'Aplicación web',
     'online_shop' => 'Tienda online',
     'other' => 'Otro',
+    'general' => 'General',
     'description' => 'Descripción',
     'description_placeholder' => 'Describe tu proyecto / idea en unas pocas frases.',
     'more_details' => 'Más detalles',

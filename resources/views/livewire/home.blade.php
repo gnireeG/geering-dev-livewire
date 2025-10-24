@@ -26,7 +26,7 @@
                         <div class="grow">
                             <h3 class="text-xl font-bold mb-2">{{ __('home.websites') }}</h3>
                             <p>{{ __('home.websites_description') }}</p>
-                            <x-action-link wire:navigate href="{{ route('about') }}" class="mt-4">{{ __('general.read_more') }}</x-action-link>
+                            {{-- <x-action-link wire:navigate href="{{ route('about') }}" class="mt-4">{{ __('general.read_more') }}</x-action-link> --}}
                         </div>
                         <div>
                             <img src="{{ asset('images/website.svg') }}" alt="{{ __('home.websites') }}" class="w-64 scale-150 origin-bottom-left transition-transform duration-500 group-hover:rotate-6" />
@@ -39,7 +39,7 @@
                         <div class="grow">
                             <h3 class="text-xl font-bold mb-2">{{ __('home.webapps') }}</h3>
                             <p>{{ __('home.webapps_description') }}</p>
-                            <x-action-link wire:navigate href="{{ route('about') }}" class="mt-4">{{ __('general.read_more') }}</x-action-link>
+                            {{-- <x-action-link wire:navigate href="{{ route('about') }}" class="mt-4">{{ __('general.read_more') }}</x-action-link> --}}
                         </div>
                     </div>
                 </div>

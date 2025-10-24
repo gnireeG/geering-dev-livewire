@@ -11,6 +11,7 @@ return [
     'no' => 'No',
     'previous' => 'Previous',
     'next' => 'Next',
+    'next_step' => 'Next',
     'submit' => 'Submit',
     'cancel' => 'Cancel',
     'or' => 'or',
