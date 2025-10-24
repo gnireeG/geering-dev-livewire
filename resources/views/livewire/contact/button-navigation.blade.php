@@ -1,5 +1,5 @@
 <div class="mt-16 flex justify-end">
-    <?php $current = $this->state()->currentStep(); ?>
+    @php $current = $this->state()->currentStep(); @endphp
     <div class="flex gap-4">
         @if($current['hasPrevious'])
         <button wire:click="previousStep" class="btn btn-ghost" wire.loading.attr="disabled">
