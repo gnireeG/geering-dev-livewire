@@ -14,21 +14,21 @@
     <div class="md:hidden mb-8">
         <div class="flex gap-4 items-center">
             @php
-                $current = 0;
+                $currentIndex = 0;
                 $percentage = 0;
                 foreach($steps as $index => $step) {
                     if($step->status->value == "current") {
-                        $current = $index + 1;
+                        $currentIndex = $index + 1;
                         $percentage = ($index + 1) / (count($steps)) * 100;
                         break;
                     }
                 }
             @endphp
-            <div class="progress-bar text-sm" style="background: radial-gradient(closest-side, var(--color-bg-light) 79%, transparent 80% 100%), conic-gradient(green {{ $percentage }}%, transparent 0);">{{ $current }} / {{ count($steps) }}</div>
+            <div class="progress-bar text-sm" style="background: radial-gradient(closest-side, var(--color-bg-light) 79%, transparent 80% 100%), conic-gradient(green {{ $percentage }}%, transparent 0);">{{ $currentIndex }} / {{ count($steps) }}</div>
             <div class="flex flex-col gap-2">
-                <p class="font-bold">{{ $steps[$current - 1]->label }}</p>
-                @if($current < count($steps))
-                    <p class="text-xs">{{ __('general.next_step') }}: {{ $steps[$current]->label }}</p>
+                <p class="font-bold">{{ $steps[$currentIndex - 1]->label }}</p>
+                @if($currentIndex < count($steps))
+                    <p class="text-xs">{{ __('general.next_step') }}: {{ $steps[$currentIndex]->label }}</p>
                 @endif
             </div>
         </div>
