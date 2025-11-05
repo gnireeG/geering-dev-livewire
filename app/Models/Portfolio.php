@@ -19,6 +19,8 @@ use Spatie\Tags\HasTags;
 use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 
+use Spatie\Translatable\HasTranslations;
+
 #[ScopedBy([PublishedScope::class])]
 class Portfolio extends Model implements HasMedia
 {
@@ -26,6 +28,7 @@ class Portfolio extends Model implements HasMedia
     use InteractsWithMedia;
     use HasSlug;
     use HasTags;
+    use HasTranslations;
     
     protected $fillable = [
         'title',
@@ -34,6 +37,8 @@ class Portfolio extends Model implements HasMedia
         'shortdesc',
         'published',
     ];
+
+    public $translatable = ['title', 'description', 'shortdesc'];
 
     public function registerMediaConversions(?Media $media = null): void
     {
