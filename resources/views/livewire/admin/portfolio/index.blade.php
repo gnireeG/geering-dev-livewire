@@ -19,7 +19,7 @@
             <tbody>
             @foreach($portfolios as $p)
                 <tr class="hover:bg-zinc-50 hover:dark:bg-zinc-700">
-                    <td class="p-2">
+                    <td class="p-2" wire:click="toggleStatus({{ $p->id }})" style="cursor: pointer;">
                         @if($p->published)
                             <flux:icon.eye class="text-green-500" />
                         @else

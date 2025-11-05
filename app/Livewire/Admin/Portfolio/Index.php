@@ -17,6 +17,15 @@ class Index extends Component
     public $title;
     public $description;
 
+    public function toggleStatus($id){
+        $portfolio = Portfolio::withoutGlobalScopes()->find($id);
+        if ($portfolio) {
+            $portfolio->published = !$portfolio->published;
+            $portfolio->save();
+            $this->portfolios = Portfolio::withoutGlobalScopes()->get(); // Refresh the list
+        }
+    }
+
     public function create(){
         $this->validate([
             'title' => 'required|string|max:255|min:10',
