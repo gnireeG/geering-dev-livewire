@@ -31,7 +31,7 @@ class Portfolio extends Component
             $query->withAnyTags($this->selectedTags);
         }
 
-        return $query->get(); 
+        return $query->orderBy('created_at', 'desc')->get();
     }
 
     public function addTag($tagName){
