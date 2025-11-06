@@ -39,10 +39,10 @@ class Index extends Component
     }
 
     public function remove($id){
-        $portfolio = Portfolio::find($id);
+        $portfolio = Portfolio::withoutGlobalScopes()->find($id);
         if ($portfolio) {
             $portfolio->delete();
-            $this->portfolios = Portfolio::all(); // Refresh the list
+            $this->portfolios = Portfolio::withoutGlobalScopes()->get(); // Refresh the list
         }
     }
 
