@@ -25,6 +25,9 @@ Route::group([
     Route::get('/portfolio/{slug}', \App\Livewire\Portfolio\Detail::class)->name('portfolio.detail');
     Route::get('/about', \App\Livewire\About::class)->name('about');
     Route::get(LaravelLocalization::transRoute('routes.contact'), \App\Livewire\Contact::class)->name('contact');
+    Route::get(LaravelLocalization::transRoute('routes.services'), function(){
+        return view('services')->title(__('general.services'));
+    })->name('services');
     Route::get(LaravelLocalization::transRoute('routes.privacy'), function(){
         return view('privacy')->title(__('general.privacy_policy'));
     })->name('privacy');

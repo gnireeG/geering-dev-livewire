@@ -20,4 +20,5 @@ return [
     'home' => 'Startseite',
     'about' => 'Über mich',
     'portfolio' => 'Portfolio',
+    'services' => 'Dienstleistungen',
 ];

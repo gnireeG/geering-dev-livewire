@@ -3,5 +3,6 @@
 return [
     'privacy' => 'privacy',
     'imprint' => 'imprint',
-    'contact' => 'contact'
+    'contact' => 'contact',
+    'services' => 'services',
 ];

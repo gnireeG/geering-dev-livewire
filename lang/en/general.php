@@ -20,4 +20,5 @@ return [
     'home' => 'Home',
     'about' => 'About Me',
     'portfolio' => 'Portfolio',
+    'services' => 'Services',
 ];
