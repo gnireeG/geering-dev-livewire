@@ -14,7 +14,7 @@
         <x-container class="md:hidden py-12">
             <h1 class="mb-4">{!! __('home.heading') !!}</h1>
             <p class="text-lg mb-8 max-w-2xl">{!! __('home.intro') !!}</p>
-            <a href="mailto:pascal@deinedomain.ch" class="btn btn-outline"><flux:icon.chevron-right />{{ __('home.c2a_project') }}</a>
+            <a href="{{ route('contact') }}" class="btn btn-outline" wire:navigate><flux:icon.chevron-right />{{ __('home.c2a_project') }}</a>
         </x-container>
     </section>
     <x-container>
