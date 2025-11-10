@@ -47,6 +47,7 @@ Route::group([
         Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
         Volt::route('settings/password', 'settings.password')->name('settings.password');
         Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+        Volt::route('settings/timezone', 'settings.timezone')->name('settings.timezone');
 
         Route::group(['prefix' => 'admin'], function() {
             Route::group(['prefix' => 'portfolio'], function(){
@@ -59,6 +60,18 @@ Route::group([
                 Route::get('/', \App\Livewire\Admin\Contactform\Index::class)->name('contactform.index');
                 Route::get('/{contactform}', \App\Livewire\Admin\Contactform\Detail::class)->name('contactform.detail');
             });
+
+            Route::group(['prefix' => 'email'], function(){
+                Route::get('/', \App\Livewire\Admin\Email\Index::class)->name('email.index');
+                Route::get('/create', \App\Livewire\Admin\Email\Create::class)->name('email.create');
+                Route::get('/{email}', \App\Livewire\Admin\Email\Edit::class)->name('email.edit');
+            });
+            Route::group(['prefix' => 'companies'], function(){
+                Route::get('/', \App\Livewire\Admin\Company\Index::class)->name('company.index');
+                Route::get('/create', \App\Livewire\Admin\Company\Create::class)->name('company.create');
+                Route::get('/{company}', \App\Livewire\Admin\Company\Edit::class)->name('company.edit');
+            });
+
         });
 
         if(env('APP_DEBUG') === true) {

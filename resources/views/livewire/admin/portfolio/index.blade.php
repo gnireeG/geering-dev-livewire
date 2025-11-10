@@ -1,11 +1,9 @@
-<div>
-    <section class="flex justify-between items-center">
-        <flux:heading level="1" size="xl">Portfolio</flux:heading>
+<x-layouts.app.content heading="All Portfolios" subheading="Manage the portfolios in the system.">
+    <x-slot:actions>
         <a wire:navigate href="{{ route('portfolio.create') }}">
-            <flux:button icon:trailing="plus" class="cursor-pointer">Create Portfolio</flux:button>
+            <flux:button icon:trailing="plus" class="cursor-pointer" size="sm">New</flux:button>
         </a>
-    </section>
-    <flux:separator class="my-8" />
+    </x-slot:actions>
     <div class="overflow-x-auto">
         <table>
             <thead>
@@ -37,4 +35,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</x-layouts.app.content>

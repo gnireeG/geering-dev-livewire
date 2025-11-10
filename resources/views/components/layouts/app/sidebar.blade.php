@@ -19,25 +19,28 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="Portfolio" class="grid">
                     <flux:navlist.item icon="trophy" :href="route('portfolio.index')" :current="request()->routeIs('portfolio.index')" wire:navigate>Portfolio</flux:navlist.item>
+                    <flux:navlist.item icon="plus" :href="route('portfolio.create')" :current="request()->routeIs('portfolio.create')" wire:navigate>New Portfolio</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="Contactform" class="grid">
-                    <flux:navlist.item icon="trophy" :href="route('contactform.index')" :current="request()->routeIs('contactform.index')" wire:navigate>Contactform</flux:navlist.item>
+                    <flux:navlist.item icon="document-text" :href="route('contactform.index')" :current="request()->routeIs('contactform.index')" wire:navigate>Contactform</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+            <flux:navlist variant="outline">
+                <flux:navlist.group heading="Emails" class="grid">
+                    <flux:navlist.item icon="inbox-stack" :href="route('email.index')" :current="request()->routeIs('email.index')" wire:navigate>All Emails</flux:navlist.item>
+                    <flux:navlist.item icon="plus" :href="route('email.create')" :current="request()->routeIs('email.create')" wire:navigate>Write Email</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+            <flux:navlist variant="outline">
+                <flux:navlist.group heading="Companies" class="grid">
+                    <flux:navlist.item icon="banknotes" :href="route('company.index')" :current="request()->routeIs('company.index')" wire:navigate>All Companies</flux:navlist.item>
+                    <flux:navlist.item icon="plus" :href="route('company.create')" :current="request()->routeIs('company.create')" wire:navigate>New Company</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:spacer />
-
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                {{ __('Repository') }}
-                </flux:navlist.item>
-
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                {{ __('Documentation') }}
-                </flux:navlist.item>
-            </flux:navlist>
 
             <!-- Desktop User Menu -->
             <flux:dropdown class="hidden lg:block" position="bottom" align="start">
@@ -136,6 +139,10 @@
         </flux:header>
 
         {{ $slot }}
+
+        @persist('toast')
+            <flux:toast></flux:toast>
+        @endpersist
 
         @fluxScripts
         @mediaLibraryScripts

@@ -102,15 +102,15 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
-h1{
+h1:not(.backend-content h1){
     @apply text-2xl lg:text-4xl font-bold text-primary pb-4;
 }
 
-h2{
+h2:not(.backend-content h2){
     @apply text-3xl font-semibold text-primary pb-4;
 }
 
-h3{
+h3:not(.backend-content h3){
     @apply text-2xl font-semibold text-primary pb-4;
 }
 

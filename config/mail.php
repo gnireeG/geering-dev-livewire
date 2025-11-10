@@ -112,10 +112,16 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example name'),
     ],
-    'reply_to' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example name'),
-    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Global "Reply To" Address
+    |--------------------------------------------------------------------------
+    |
+    | Removed to allow individual mailables to control reply-to addresses
+    |
+    */
+
     'admin' => [
         'address' => env('MAIL_ADMIN_ADDRESS', 'admin@example.com'),
     ],

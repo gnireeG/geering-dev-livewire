@@ -24,7 +24,7 @@
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.16",
-        "sass": "^1.89.2",
+        "sass": "^1.93.3",
         "sass-loader": "^16.0.5"
     }
 }

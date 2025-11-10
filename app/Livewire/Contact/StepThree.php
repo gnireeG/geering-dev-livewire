@@ -54,9 +54,7 @@ class StepThree extends StepComponent
             // If the honeypot field is filled, we assume it's a bot submission and do nothing
             return;
         }
-
-        sleep(3);
-
+        
         $hasWebsiteRaw = $this->state()->all()['contact.step-two']['has_website'] ?? null;
         $has_website = ($hasWebsiteRaw === 'yes' || $hasWebsiteRaw === 1 || $hasWebsiteRaw === true) ? 1 : 0;
         

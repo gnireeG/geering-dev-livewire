@@ -2,23 +2,23 @@
 
 namespace App\Mail;
 
-use App\Models\Contactform;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Email;
 
-class ContactFormReceived extends Mailable
+class SendEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public Contactform $contactform)
+    public function __construct(public Email $email)
     {
         //
     }
@@ -29,9 +29,11 @@ class ContactFormReceived extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Form Received',
-            from: new Address('hello@geering.dev', 'geering.dev'),
-            replyTo: [new Address('hello@geering.dev', 'geering.dev')]
+            subject: $this->email->subject,
+            from: new Address('joel@geering.dev', 'Joel - geering.dev'),
+            replyTo: [
+                new Address('joel@geering.dev', 'Joel - geering.dev'),
+            ],
         );
     }
 
@@ -41,7 +43,7 @@ class ContactFormReceived extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mails.contactform-received',
+            view: 'mails.send-email',
         );
     }
 

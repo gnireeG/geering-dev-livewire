@@ -1,21 +1,16 @@
 <?php
 
-namespace App\Livewire\Admin\Contactform;
+namespace App\Livewire\Components;
 
 use Livewire\Component;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
-use App\Models\Contactform;
+use App\Models\Email as EmailModel;
 use Livewire\WithPagination;
-use Livewire\Attributes\Computed;
 
-#[Layout('components.layouts.app')]
-#[Title('Contact Forms')]
-class Index extends Component
+class EmailList extends Component
 {
-
     use WithPagination;
 
+    public $company_id = null;
 
     public $sortBy = 'created_at';
     public $sortDirection = 'desc';
@@ -29,16 +24,24 @@ class Index extends Component
         }
     }
 
-    #[Computed]
-    public function forms()
+
+    #[\Livewire\Attributes\Computed]
+    public function emails()
     {
-        return Contactform::query()
+        return EmailModel::query()
+            ->with('company')
             ->tap(fn ($query) => $this->sortBy ? $query->orderBy($this->sortBy, $this->sortDirection) : $query)
+            ->when($this->company_id, fn ($query) => $query->where('company_id', $this->company_id))
             ->paginate(20);
+    }
+
+    public function mount($company_id = null)
+    {
+        $this->company_id = $company_id;
     }
 
     public function render()
     {
-        return view('livewire.admin.contactform.index');
+        return view('livewire.components.email-list');
     }
 }

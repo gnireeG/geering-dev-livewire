@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Livewire\Admin\Contactform;
+namespace App\Livewire\Admin\Company;
 
 use Livewire\Component;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
-use App\Models\Contactform;
 use Livewire\WithPagination;
+use App\Models\Company;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 
-#[Layout('components.layouts.app')]
-#[Title('Contact Forms')]
 class Index extends Component
 {
 
     use WithPagination;
 
+    #[Url(as: 'q')]
+    public $search = '';
 
-    public $sortBy = 'created_at';
-    public $sortDirection = 'desc';
+    public $sortBy = 'name';
+    public $sortDirection = 'asc';
 
     public function sort($column) {
         if ($this->sortBy === $column) {
@@ -29,16 +28,17 @@ class Index extends Component
         }
     }
 
-    #[Computed]
-    public function forms()
+    #[\Livewire\Attributes\Computed]
+    public function companies()
     {
-        return Contactform::query()
+        return Company::query()
             ->tap(fn ($query) => $this->sortBy ? $query->orderBy($this->sortBy, $this->sortDirection) : $query)
+            ->when($this->search, fn ($query) => $query->where('name', 'like', '%' . $this->search . '%'))
             ->paginate(20);
     }
 
     public function render()
     {
-        return view('livewire.admin.contactform.index');
+        return view('livewire.admin.company.index');
     }
 }

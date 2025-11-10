@@ -19,6 +19,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Register Blade directive for timezone conversion
+        \Illuminate\Support\Facades\Blade::directive('userdate', function ($expression) {
+            return "<?php echo \App\Helpers\TimezoneHelper::toUserTimezone($expression)->format('d.m.Y H:i'); ?>";
+        });
+
+        \Illuminate\Support\Facades\Blade::directive('userdaterelative', function ($expression) {
+            return "<?php echo \App\Helpers\TimezoneHelper::toUserTimezone($expression)->diffForHumans(); ?>";
+        });
     }
 }
