@@ -49,6 +49,18 @@ return [
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
 
+        'private_smtp' => [
+            'transport' => 'smtp',
+            'scheme' => env('PRIVATE_MAIL_SCHEME'),
+            'url' => env('PRIVATE_MAIL_URL'),
+            'host' => env('PRIVATE_MAIL_HOST', '127.0.0.1'),
+            'port' => env('PRIVATE_MAIL_PORT', 2525),
+            'username' => env('PRIVATE_MAIL_USERNAME'),
+            'password' => env('PRIVATE_MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],

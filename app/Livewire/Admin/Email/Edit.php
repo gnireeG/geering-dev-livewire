@@ -82,7 +82,7 @@ class Edit extends Component
     public function sendMail()
     {
         try {
-            Mail::to($this->recipients)->send(new SendEmail($this->email));
+            Mail::mailer('private_smtp')->to($this->recipients)->send(new SendEmail($this->email));
         } catch (\Exception $e) {
             $this->email->update(['status' => 'failed']);
             Flux::toast(heading: 'Error', text: 'Failed to send email: ' . $e->getMessage(), variant: 'warning', duration: 0);
