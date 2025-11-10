@@ -35,7 +35,8 @@
             </flux:navlist>
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="Companies" class="grid">
-                    <flux:navlist.item icon="banknotes" :href="route('company.index')" :current="request()->routeIs('company.index')" wire:navigate>All Companies</flux:navlist.item>
+                    <flux:navlist.item icon="building-office-2" :href="route('company.index')" :current="request()->routeIs('company.index')" wire:navigate>All Companies</flux:navlist.item>
+                    <flux:navlist.item icon="building-office-2" :href="route('company.customers')" :current="request()->routeIs('company.customers')" wire:navigate>Customers</flux:navlist.item>
                     <flux:navlist.item icon="plus" :href="route('company.create')" :current="request()->routeIs('company.create')" wire:navigate>New Company</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>

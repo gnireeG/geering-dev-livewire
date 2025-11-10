@@ -1,8 +1,6 @@
-<div>
-    <section class="flex justify-between items-center">
-        <flux:heading level="1" size="xl">Portfolio</flux:heading>
-    </section>
-    <flux:separator class="my-8" />
+<x-layouts.app.content :heading="$portfolio->title ?? 'Create Portfolio'" :subheading="$portfolio ? 'Edit the details of the portfolio item.' : 'Create a new portfolio item.'" :breadcrumbs="[
+    ['label' => 'All Portfolios', 'href' => route('portfolio.index')],
+]">
     <div>
         <div>
             <div class="flex justify-end">
@@ -92,4 +90,4 @@
             @endif
         </div>
     </div>
-</div>
+</x-layouts.app.content>

@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use App\Models\Portfolio;
+use Flux\Flux;
 
 #[Layout('components.layouts.app')]
 #[Title('Portfolios')]
@@ -23,6 +24,11 @@ class Index extends Component
             $portfolio->published = !$portfolio->published;
             $portfolio->save();
             $this->portfolios = Portfolio::withoutGlobalScopes()->get(); // Refresh the list
+            Flux::toast(
+                heading: 'Success', 
+                text: "Portfolio '{$portfolio->title}' has been " . ($portfolio->published ? 'published' : 'unpublished') . '.', 
+                variant: 'success'
+            );
         }
     }
 

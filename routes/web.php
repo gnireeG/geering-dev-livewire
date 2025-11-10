@@ -69,6 +69,7 @@ Route::group([
             Route::group(['prefix' => 'companies'], function(){
                 Route::get('/', \App\Livewire\Admin\Company\Index::class)->name('company.index');
                 Route::get('/create', \App\Livewire\Admin\Company\Create::class)->name('company.create');
+                Route::get('/customers', \App\Livewire\Admin\Company\Customers::class)->name('company.customers');
                 Route::get('/{company}', \App\Livewire\Admin\Company\Edit::class)->name('company.edit');
             });
 

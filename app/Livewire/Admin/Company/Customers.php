@@ -5,7 +5,7 @@ namespace App\Livewire\Admin\Company;
 use Livewire\Component;
 use Livewire\Attributes\Url;
 
-class Index extends Component
+class Customers extends Component
 {
 
     #[Url(as: 'q')]
@@ -13,6 +13,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.admin.company.index');
+        return view('livewire.admin.company.customers');
     }
 }
