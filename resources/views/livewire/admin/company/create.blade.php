@@ -2,27 +2,11 @@
     ['label' => 'All Companies', 'href' => route('company.index')],
 ]">
     <form wire:submit="save" class="max-w-2xl">
-        <flux:field>
-            <flux:label badge="Required">Company Name</flux:label>
-            <flux:input wire:model="name" />
-            <flux:error name="name" />
-        </flux:field>
-        <div class="grid grid-cols-2 gap-4">
-            <flux:field class="mt-4">
-                <flux:label>Email</flux:label>
-                <flux:input type="email" wire:model="email" type="email" />
-                <flux:error name="email" />
-            </flux:field>
-            <flux:field class="mt-4">
-                <flux:label>Website</flux:label>
-                <flux:input wire:model="website" type="url" />
-                <flux:error name="website" />
-            </flux:field>
-            <flux:field class="mt-4">
-                <flux:label>Phone number</flux:label>
-                <flux:input type="tel" wire:model="phone" />
-                <flux:error name="phone" />
-            </flux:field>
+        <flux:input wire:model="name" label="Company Name" badge="Required" />
+        <div class="grid grid-cols-2 gap-4 mt-4">
+            <flux:input wire:model="email" label="Email" type="email" />
+            <flux:input wire:model="website" label="Website" type="url" />
+            <flux:input wire:model="phone" label="Phone number" type="tel" />
         </div>
         <flux:field variant="inline" class="mt-8">
             <flux:checkbox wire:model="customer" />
@@ -31,34 +15,22 @@
         </flux:field>
         <flux:fieldset class="my-8">
             <flux:legend>Address</flux:legend>
-            <flux:field>
-                <flux:label>Street</flux:label>
-                <flux:input wire:model="address" />
-                <flux:error name="address" />
-            </flux:field>
+            <flux:input wire:model="address" label="Street" />
             <div class="grid grid-cols-6 gap-4 mt-4">
-                <flux:field class="col-span-2">
-                    <flux:label>ZIP</flux:label>
-                    <flux:input wire:model="zip" />
-                    <flux:error name="zip" />
-                </flux:field>
-                <flux:field class="col-span-4">
-                    <flux:label>City</flux:label>
-                    <flux:input wire:model="city" />
-                    <flux:error name="city" />
-                </flux:field>
+                <div class="col-span-2">
+                    <flux:input wire:model="zip" label="ZIP" />
+                </div>
+                <div class="col-span-4">
+                    <flux:input wire:model="city" label="City" />
+                </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
-                <flux:field class="mt-4">
-                    <flux:label>State</flux:label>
-                    <flux:input wire:model="state" />
-                    <flux:error name="state" />
-                </flux:field>
-                <flux:field class="mt-4">
-                    <flux:label>Country</flux:label>
-                    <flux:input wire:model="country" />
-                    <flux:error name="country" />
-                </flux:field>
+                <div class="mt-4">
+                    <flux:input wire:model="state" label="State" />
+                </div>
+                <div class="mt-4">
+                    <flux:input wire:model="country" label="Country" />
+                </div>
             </div>
         </flux:fieldset>
         <div class="flex justify-end mt-6">
