@@ -24,7 +24,7 @@ class Edit extends Component
     {
         return [
             'title' => 'required|string|max:255',
-            'description' => 'nullable|string|max:10000',
+            'description' => 'nullable|string',
             'company_id' => 'nullable|integer|exists:companies,id',
             'location' => 'nullable|string|max:255',
             'start_date' => 'required|date',

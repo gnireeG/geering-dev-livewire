@@ -26,7 +26,7 @@ class Calendar extends Component
     #[Rule('required|string|max:255')]
     public $newMeetingTitle = '';
 
-    #[Rule('nullable|string|max:1000')]
+    #[Rule('nullable|string')]
     public $newMeetingDescription = '';
 
     #[Rule('nullable|integer|exists:companies,id')]
@@ -39,8 +39,8 @@ class Calendar extends Component
         $validated = $this->validate();
 
         $meeting = Meeting::create([
-            'from' => Carbon::parse($this->newMeetingDate . ' ' . $this->newMeetingTime, auth()->user()->timezone ?? 'UTC')->setTimezone('UTC'),
-            'to' => Carbon::parse($this->newMeetingEndDate . ' ' . $this->newMeetingEndTime, auth()->user()->timezone ?? 'UTC')->setTimezone('UTC'),
+            'from' => Carbon::parse($this->newMeetingDate . ' ' . $this->newMeetingTime),
+            'to' => Carbon::parse($this->newMeetingEndDate . ' ' . $this->newMeetingEndTime),
             'title' => $this->newMeetingTitle,
             'description' => $this->newMeetingDescription,
             'company_id' => $this->newMeetingCompanyId,
