@@ -369,3 +369,7 @@ html.dark .sun-and-moon > .moon > circle {
   background-color: var(--color-bg-light-inverted);
   clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
 }
+
+[data-flux-card]{
+    @apply bg-zinc-100 dark:bg-white/10;
+}

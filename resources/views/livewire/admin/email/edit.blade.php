@@ -35,15 +35,7 @@
                     <flux:error name="sent_at" />
                 </flux:field>
             </div>
-            <flux:field class="mt-4">
-                <flux:label>Company</flux:label>
-                <flux:select wire:model="company_id" variant="listbox" searchable>
-                    @foreach($companies as $company)
-                        <flux:select.option value="{{ $company->id }}">{{ $company->name }}</flux:select.option>
-                    @endforeach
-                </flux:select>
-                <flux:error name="company_id" />
-            </flux:field>
+            <livewire:components.company-picker wire:model="company_id" class="mt-4" />
             <flux:field class="mt-4">
                 <flux:label>Subject</flux:label>
                 <flux:input wire:model="subject" />

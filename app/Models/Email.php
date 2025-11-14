@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\HasTimezoneConversion;
 
 class Email extends Model
 {
 
-    use hasFactory;
+    use hasFactory, HasTimezoneConversion;
 
     protected $fillable = [
         'subject',
@@ -35,28 +36,9 @@ class Email extends Model
         return $this->belongsTo(Company::class);
     }
 
-    /**
-     * Get created_at in user timezone
-     */
-    public function getCreatedAtUserAttribute()
+    protected function getTimezoneConvertedAttributes(): array
     {
-        return \App\Helpers\TimezoneHelper::toUserTimezone($this->created_at);
-    }
-
-    /**
-     * Get updated_at in user timezone  
-     */
-    public function getUpdatedAtUserAttribute()
-    {
-        return \App\Helpers\TimezoneHelper::toUserTimezone($this->updated_at);
-    }
-
-    /**
-     * Get sent_at in user timezone
-     */
-    public function getSentAtUserAttribute()
-    {
-        return $this->sent_at ? \App\Helpers\TimezoneHelper::toUserTimezone($this->sent_at) : null;
+        return ['sent_at', 'created_at', 'updated_at'];
     }
 
 }

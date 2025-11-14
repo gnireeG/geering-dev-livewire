@@ -45,4 +45,9 @@ class Company extends Model
     {
         return $this->hasMany(Email::class);
     }
+
+    public function meetings(): HasMany
+    {
+        return $this->hasMany(Meeting::class);
+    }
 }

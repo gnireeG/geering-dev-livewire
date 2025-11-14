@@ -11,6 +11,10 @@ Route::post('/theme', function(){
     return response()->json(['status' => 'success', 'theme' => $theme]);
 });
 
+Route::post('/livewire/update', function () {
+    return 'Weird bugs required weird fixes.';
+});
+
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
@@ -66,11 +70,17 @@ Route::group([
                 Route::get('/create', \App\Livewire\Admin\Email\Create::class)->name('email.create');
                 Route::get('/{email}', \App\Livewire\Admin\Email\Edit::class)->name('email.edit');
             });
+
             Route::group(['prefix' => 'companies'], function(){
                 Route::get('/', \App\Livewire\Admin\Company\Index::class)->name('company.index');
                 Route::get('/create', \App\Livewire\Admin\Company\Create::class)->name('company.create');
                 Route::get('/customers', \App\Livewire\Admin\Company\Customers::class)->name('company.customers');
                 Route::get('/{company}', \App\Livewire\Admin\Company\Edit::class)->name('company.edit');
+            });
+
+            Route::group(['prefix' => 'meetings'], function(){
+                Route::get('/calendar', \App\Livewire\Admin\Meeting\Calendar::class)->name('meeting.calendar');
+                Route::get('/{meeting}', \App\Livewire\Admin\Meeting\Edit::class)->name('meeting.edit');
             });
 
         });

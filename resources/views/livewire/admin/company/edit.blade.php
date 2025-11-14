@@ -5,6 +5,7 @@
     <flux:tab.group>
         <flux:tabs variant="pills">
             <flux:tab name="details" icon="identification">Company Details</flux:tab>
+            <flux:tab name="meetings" icon="calendar">Meetings ({{ $meeting_count }})</flux:tab>
             <flux:tab name="emails" icon="envelope">Emails ({{ $email_count }})</flux:tab>
         </flux:tabs>
         <flux:tab.panel name="details">
@@ -75,6 +76,16 @@
         </flux:tab.panel>
         <flux:tab.panel name="emails">
             <livewire:components.email-list company_id="{{ $company->id }}" />
+        </flux:tab.panel>
+        <flux:tab.panel name="meetings">
+            <div class="max-w-2xl">
+                @foreach($meetings as $meeting)
+                    <x-meeting-card :meeting="$meeting" />
+                @endforeach
+            </div>
+            @if($meetings->isEmpty())
+                <p class="text-center text-muted">No meetings found for this company.</p>
+            @endif
         </flux:tab.panel>
     </flux:tab.group>
 </x-layouts.app.content>

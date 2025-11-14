@@ -13,6 +13,8 @@ class Edit extends Component
     public Company $company;
 
     public $email_count = 0;
+    public $meeting_count = 0;
+    public $meetings = [];
 
     #[Rule('required|string|max:255')]
     public $name = '';
@@ -62,6 +64,8 @@ class Edit extends Component
         $this->customer = (bool) $this->company->customer;
 
         $this->email_count = $this->company->emails()->count();
+        $this->meetings = $this->company->meetings()->get();
+        $this->meeting_count = $this->meetings->count();
     }
 
     public function save()
