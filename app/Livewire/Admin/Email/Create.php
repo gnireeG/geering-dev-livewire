@@ -59,7 +59,8 @@ class Create extends Component
             'company_id' => $this->company_id,
         ]);
 
-        return redirect()->route('email.edit', $mail);
+        $this->reset();
+        $this->redirect(route('email.edit', $mail));
 
         //Mail::to($this->recipients)->send(new SendEmail($mail));
     }

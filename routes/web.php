@@ -83,6 +83,25 @@ Route::group([
                 Route::get('/{meeting}', \App\Livewire\Admin\Meeting\Edit::class)->name('meeting.edit');
             });
 
+            Route::group(['prefix' => 'projects'], function(){
+                Route::get('/', \App\Livewire\Admin\Project\Index::class)->name('project.index');
+                Route::get('/create', \App\Livewire\Admin\Project\Create::class)->name('project.create');
+                Route::get('/planning', \App\Livewire\Admin\Project\Planning::class)->name('project.planning');
+                Route::get('/open', \App\Livewire\Admin\Project\Open::class)->name('project.open');
+                Route::get('/completed', \App\Livewire\Admin\Project\Completed::class)->name('project.completed');
+                
+                Route::bind('project', function ($value) {
+                    return \App\Models\Project::with(['company', 'meetings.company', 'tasks.project'])->findOrFail($value);
+                });
+                
+                Route::get('/{project}', \App\Livewire\Admin\Project\Edit::class)->name('project.edit');
+
+                Route::group(['prefix' => 'tasks'], function(){
+                    Route::get('/{task}', \App\Livewire\Admin\Project\Task\Edit::class)->name('task.edit');
+                });
+
+            });
+
         });
 
         if(env('APP_DEBUG') === true) {

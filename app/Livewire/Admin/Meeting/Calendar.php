@@ -8,45 +8,10 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Session;
 use Livewire\Attributes\Rule;
 use App\Models\Meeting;
+use Livewire\Attributes\On;
 
 class Calendar extends Component
 {
-    #[Rule('required|date')]
-    public $newMeetingDate = null;
-
-    #[Rule('required|date_format:H:i')]
-    public $newMeetingTime = '08:00';
-
-    #[Rule('required|date')]
-    public $newMeetingEndDate = null;
-
-    #[Rule('required|date_format:H:i')]
-    public $newMeetingEndTime = '09:00';
-
-    #[Rule('required|string|max:255')]
-    public $newMeetingTitle = '';
-
-    #[Rule('nullable|string')]
-    public $newMeetingDescription = '';
-
-    #[Rule('nullable|integer|exists:companies,id')]
-    public $newMeetingCompanyId = null;
-
-    #[Rule('nullable|string|max:255')]
-    public $newMeetingLocation = '';
-
-    public function saveMeeting(){
-        $validated = $this->validate();
-
-        $meeting = Meeting::create([
-            'from' => Carbon::parse($this->newMeetingDate . ' ' . $this->newMeetingTime),
-            'to' => Carbon::parse($this->newMeetingEndDate . ' ' . $this->newMeetingEndTime),
-            'title' => $this->newMeetingTitle,
-            'description' => $this->newMeetingDescription,
-            'company_id' => $this->newMeetingCompanyId,
-            'location' => $this->newMeetingLocation,
-        ]);
-    }
 
 
     public $todaysWeek;
@@ -63,6 +28,7 @@ class Calendar extends Component
         return Carbon::now(auth()->user()->timezone ?? 'UTC');
     }
 
+    #[On('meeting-created')]
     #[Computed]
     public function meetings()
     {
@@ -150,15 +116,21 @@ class Calendar extends Component
             $this->weekDays[] = $monday->copy()->addDays($i);
         }
     }
-    
-    public function setNewMeetingDate($date)
-    {
-        $this->newMeetingDate = $date;
-        $this->newMeetingEndDate = $date; // Same day by default
-    }
 
     public function render()
     {
         return view('livewire.admin.meeting.calendar');
     }
+
+
+    // New properties to hold the selected dates (passing down to the form component as a reactive prop)
+    public $newMeetingDate = null;
+    public $newMeetingEndDate = null;
+    
+    public function setNewMeetingDate($date)
+    {
+        $this->newMeetingDate = $date;
+        $this->newMeetingEndDate = $date;
+    }
+
 }

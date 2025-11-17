@@ -12,7 +12,7 @@
                 Contact Request #{{ $contactform['id'] }}
             </flux:heading>
             <span class="text-sm text-muted-foreground">
-                Received: {{ \Carbon\Carbon::parse($contactform['created_at'])->format('d.m.Y H:i') }}
+                Received: {{ $contactform['created_at']->format('d.m.Y H:i') }}
             </span>
         </div>
     </div>

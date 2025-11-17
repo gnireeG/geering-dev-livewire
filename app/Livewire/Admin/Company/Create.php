@@ -45,7 +45,9 @@ class Create extends Component
 
         $company = Company::create($validated);
 
-        return redirect()->route('company.edit', $company);
+        $this->reset();
+
+        $this->redirectRoute('company.edit', $company);
     }
 
     public function render()

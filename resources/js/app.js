@@ -81,3 +81,28 @@ document.addEventListener('livewire:navigated', () => {
         Alpine.store('nav').close()
     }, 10)
 })
+
+document.addEventListener('livewire:navigate', preventUnsavedChangesLoss)
+
+window.addEventListener('beforeunload', preventUnsavedChangesLoss)
+
+function preventUnsavedChangesLoss(e) {
+    const dirtyForm = document.querySelector('form.unsaved-changes')
+    if (dirtyForm) {
+        if (!confirm('You have unsaved changes. Are you sure you want to leave this page?')) {
+            e.preventDefault()
+        }
+    }
+}
+
+window.addEventListener('beforeunload', preventPageUnloadTimerRunning)
+
+function preventPageUnloadTimerRunning(e){
+    const timer = document.querySelector('#timetracker')
+    const active = timer?.getAttribute('data-timetracker-active') === 'true'
+    if(active){
+        e.preventDefault()
+        e.returnValue = 'A time tracking session is running. Are you sure you want to leave this page?'
+        return 'A time tracking session is running. Are you sure you want to leave this page?'
+    }
+}

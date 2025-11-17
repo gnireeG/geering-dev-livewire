@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Meeting;
 use Livewire\Component;
 use App\Models\Meeting;
 use Carbon\Carbon;
+use Flux\Flux;
+use Livewire\Attributes\On;
 
 class Edit extends Component
 {
@@ -14,11 +16,18 @@ class Edit extends Component
     public $title = '';
     public $description = '';
     public $company_id = null;
+    public $project_id = null;
     public $location = '';
     public $start_date = '';
     public $start_time = '';
     public $end_date = '';
     public $end_time = '';
+
+    #[On('company-changed')]
+    public function clearProjectId()
+    {
+        $this->project_id = null;
+    }
 
     public function rules()
     {
@@ -26,6 +35,7 @@ class Edit extends Component
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'company_id' => 'nullable|integer|exists:companies,id',
+            'project_id' => 'nullable|integer|exists:projects,id',
             'location' => 'nullable|string|max:255',
             'start_date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
@@ -58,6 +68,7 @@ class Edit extends Component
             'description',
             'company_id',
             'location',
+            'project_id',
         ]));
 
         $this->start_date = $this->meeting->from->format('Y-m-d');
@@ -75,8 +86,11 @@ class Edit extends Component
             'title' => $this->title,
             'description' => $this->description,
             'company_id' => $this->company_id,
+            'project_id' => $this->project_id,
             'location' => $this->location,
         ]);
+
+        Flux::toast(variant: 'success', text: 'Meeting updated successfully.');
     }
 
     public function render()

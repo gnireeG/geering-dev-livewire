@@ -17,6 +17,7 @@ class Meeting extends Model
         'from',
         'to',
         'company_id',
+        'project_id',
         'location',
     ];
 
@@ -38,5 +39,10 @@ class Meeting extends Model
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
     }
 }

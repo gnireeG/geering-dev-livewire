@@ -373,3 +373,15 @@ html.dark .sun-and-moon > .moon > circle {
 [data-flux-card]{
     @apply bg-zinc-100 dark:bg-white/10;
 }
+
+#timetracker {
+    width: 100%;
+    
+    @media (min-width: 1024px) {
+        width: calc(100vw - calc(var(--spacing) * 64) - 16px);
+    }
+}
+
+[data-flux-button="data-flux-button"]:not([disabled]) {
+  @apply cursor-pointer;
+}

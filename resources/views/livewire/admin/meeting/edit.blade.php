@@ -1,7 +1,7 @@
-<x-layouts.app.content heading="Edit Meeting" subheading="Modify the details of the meeting." :breadcrumbs="[
+<x-layouts.app.content :heading="$title" subheading="Modify the details of the meeting." :breadcrumbs="[
     ['label' => 'Calendar', 'href' => route('meeting.calendar')],
 ]">
-    <form wire:submit="save" class="max-w-2xl">
+    <x-form wire:submit="save" class="max-w-2xl">
         <div class="grid grid-cols-2 gap-4">
             <flux:fieldset>
                 <flux:legend>From</flux:legend>
@@ -41,9 +41,10 @@
             <flux:editor wire:model="description" />
             <flux:error name="description" />
         </flux:field>
-        <livewire:components.company-picker wire:model="company_id" class="mt-4" />
+        <livewire:components.company-picker wire:model.live="company_id" class="mt-4" />
+        <livewire:components.project-picker wire:model="project_id" company_id="{{ $company_id }}" class="mt-4" />
         <div class="flex justify-end">
             <flux:button type="submit" variant="primary" class="mt-6">Save Changes</flux:button>
         </div>
-    </form>
+    </x-form>
 </x-layouts.app.content>

@@ -110,9 +110,10 @@
                 </flux:menu>
             </flux:dropdown>
         </flux:header>
-
         {{ $slot }}
-
+        @persist('time-tracker')
+            <livewire:components.time-tracker />
+        @endpersist
         @persist('toast')
             <flux:toast></flux:toast>
         @endpersist

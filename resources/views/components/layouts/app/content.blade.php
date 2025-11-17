@@ -3,7 +3,7 @@
     'subheading' => null,
     'breadcrumbs' => []
 ])
-<div class="backend-content">
+<div class="backend-content pb-20">
     <flux:breadcrumbs class="mb-8">
         <flux:breadcrumbs.item href="{{ route('dashboard') }}" icon="home" wire:navigate />
         @foreach($breadcrumbs as $breadcrumb)
