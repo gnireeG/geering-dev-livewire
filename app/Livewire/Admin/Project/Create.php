@@ -13,8 +13,8 @@ class Create extends Component
 
     public $title = '';
     public $description = '';
-    public $start_date = '';
-    public $end_date = '';
+    public $start_date = null;
+    public $end_date = null;
     public $status = ProjectStatus::PLANNING->value;
     public $company_id = null;
 
