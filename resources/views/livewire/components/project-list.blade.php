@@ -26,7 +26,7 @@
                     <span>{{ $project->start_date->format('d.m.Y') }}</span>
                 </flux:table.cell>
                 <flux:table.cell>
-                    <span>{{ $project->end_date->format('d.m.Y') }}</span>
+                    <span>{{ $project->end_date ? $project->end_date->format('d.m.Y') : '-' }}</span>
                 </flux:table.cell>
             </flux:table.row>
         @endforeach
