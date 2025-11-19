@@ -2,9 +2,7 @@
     ['label' => 'All Emails', 'href' => route('email.index')],
 ]">
     <x-slot:actions>
-        @if($email->status === 'draft' || $email->status === 'failed' || app()->environment('local'))
-            <flux:button wire:click="sendMail" size="sm" wire:confirm="Are you sure you want to send this email?" icon:trailing="paper-airplane">Send Email</flux:button>
-        @endif
+        <flux:button wire:click="sendMail" size="sm" wire:confirm="Are you sure you want to send this email?" icon:trailing="paper-airplane">Send Email</flux:button>
     </x-slot:actions>
     <div>
         <form wire:submit="save">
