@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Traits\HasTimezoneConversion;
+use Gnireeg\LaravelTimezoned\HasTimezoneConversion;
 
 class Email extends Model
 {
 
     use hasFactory, HasTimezoneConversion;
+    
+    protected $timezonedAttributes = ['sent_at', 'created_at', 'updated_at'];
 
     protected $fillable = [
         'subject',
@@ -36,9 +38,6 @@ class Email extends Model
         return $this->belongsTo(Company::class);
     }
 
-    protected function getTimezoneConvertedAttributes(): array
-    {
-        return ['sent_at', 'created_at', 'updated_at'];
-    }
+
 
 }

@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Traits\HasTimezoneConversion;
+use Gnireeg\LaravelTimezoned\HasTimezoneConversion;
 
 class Project extends Model
 {
     /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory, HasTimezoneConversion;
 
+    protected $timezonedAttributes = ['start_date', 'end_date'];
+    
     protected $fillable = [
         'title',
         'description',
@@ -27,10 +29,7 @@ class Project extends Model
         'end_date' => 'date',
     ];
 
-    protected function getTimezoneConvertedAttributes(): array
-    {
-        return ['start_date', 'end_date', 'created_at', 'updated_at'];
-    }
+
 
     public function company(): BelongsTo
     {

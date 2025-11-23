@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Traits\HasTimezoneConversion;
+use Gnireeg\LaravelTimezoned\HasTimezoneConversion;
 
 class Task extends Model
 {
     /** @use HasFactory<\Database\Factories\TaskFactory> */
     use HasFactory, HasTimezoneConversion;
+    
+    protected $timezonedAttributes = ['due_date'];
 
     protected $fillable = [
         'project_id',
@@ -26,10 +28,6 @@ class Task extends Model
         'is_completed' => 'boolean',
     ];
 
-    protected function getTimezoneConvertedAttributes(): array
-    {
-        return ['due_date', 'created_at', 'updated_at'];
-    }
 
     public function project(): BelongsTo
     {

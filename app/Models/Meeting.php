@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Traits\HasTimezoneConversion;
+use Gnireeg\LaravelTimezoned\HasTimezoneConversion;
 
 class Meeting extends Model
 {
     use HasFactory, HasTimezoneConversion;
+
+    protected $timezonedAttributes = ['from', 'to'];
 
     protected $fillable = [
         'title',
@@ -28,13 +30,8 @@ class Meeting extends Model
         'updated_at' => 'datetime',
     ];
 
-    /**
-     * Specify which datetime fields should be converted to user's timezone
-     */
-    protected function getTimezoneConvertedAttributes(): array
-    {
-        return ['from', 'to', 'created_at', 'updated_at'];
-    }
+
+
 
     public function company(): BelongsTo
     {
